@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5db12c629e0b145bc0998a47d35001, type: 3}
+  m_Name: DataContainer
+  m_EditorClassIdentifier: 
+  foldoutImportGUI: 1
+  documentId: 1bfzd7fdh3NYbzT_1jbDiCRkIri8cEWN_t8lPJFWPTdU
+  selectedTogglesIds:
+  - AbilitiesData
+  - CharactersData
+  - ModificationsData
+  foldoutSerializationGUI: 0
+  serializationOutputPath: ../../Configs
+  serializationFileName: Configs.v0.1
+  serializationFormat: 0
+  _content:
+    AbilitiesData:
+    - _id: blade_shroud
+      _name: Blade Shroud
+      _compatibleTypes: Attack, Dot
+    - _id: blade_shroud_2
+      _name: Blade Shroud
+      _compatibleTypes: Attack, Dot
+    - _id: blade_shroud_3
+      _name: Blade Shroud
+      _compatibleTypes: Attack, Dot
+    - _id: offhand_shot
+      _name: Offhand Shot
+      _compatibleTypes: Dot
+    - _id: offhand_shot_2
+      _name: Offhand Shot
+      _compatibleTypes: Attack, Dot
+    - _id: syphon_life
+      _name: Syphon Life
+      _compatibleTypes: Debuff
+    - _id: despair
+      _name: Despair
+      _compatibleTypes: Psyker
+    - _id: assail
+      _name: Assail
+      _compatibleTypes: Psyker
+    - _id: get_back_in_fight
+      _name: Get Back In Fight!
+      _compatibleTypes: Buff
+    - _id: take_aim
+      _name: Take Aim!
+      _compatibleTypes: Buff
+    - _id: bring_it_down
+      _name: Bring It Down!
+      _compatibleTypes: Attack, Dot
+    - _id: bring_it_down_2
+      _name: Bring It Down!
+      _compatibleTypes: Attack, Dot
+    - _id: trembling_voice
+      _name: Trembling Voice
+      _compatibleTypes: Psyker, Debuff
+    - _id: trembling_voice_2
+      _name: Trembling Voice
+      _compatibleTypes: Psyker, Debuff
+    ModificationsData:
+    - _name: Confuse
+      _type: 0
+    - _name: Destroy
+      _type: 0
+    - _name: Distort
+      _type: 0
+    - _name: Pyromancy Fetter
+      _type: 0
+    - _name: Cripling Impact
+      _type: 1
+    - _name: Weave
+      _type: 2
+    - _name: Tear
+      _type: 2
+    - _name: Protect
+      _type: 3
+    - _name: Reinforce
+      _type: 3
+    - _name: Confuse
+      _type: 3
+    - _name: Confuse
+      _type: 4
+    CharactersData:
+    - _name: Cassia Orsellio
+      _health: 120
+      _armor: 70
+    - _name: Jae Heydari
+      _health: 115
+      _armor: 115
+    - _name: Argenta
+      _health: 150
+      _armor: 170
+    - _name: Irliet Lanaviss
+      _health: 60
+      _armor: 110
+    - _name: Acventus
+      _health: 80
+      _armor: 100
+    - _name: Avrelia
+      _health: 70
+      _armor: 80

@@ -2,9 +2,9 @@
 {
     public abstract class ViewState : UIState
     {
-        private readonly IView _view;
+        private readonly View.View _view;
 
-        protected ViewState(IView view)
+        protected ViewState(View.View view)
         {
             _view = view;
         }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.UI.Panel
 {
-    public class SettingsPanel : MonoBehaviour, IView
+    public class SettingsPanel : View.View
     {
         private const string MusicVolume = nameof(MusicVolume);
         private const string EffectsVolume = nameof(EffectsVolume);
