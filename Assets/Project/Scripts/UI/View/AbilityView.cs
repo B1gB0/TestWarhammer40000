@@ -10,6 +10,7 @@ namespace Project.Scripts.UI.View
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private Image _icon;
         [SerializeField] private Image _iconOfModification;
+        [SerializeField] private Image _backgroundOfModification;
         [SerializeField] private List<Sprite> _iconSpritesOfModification;
 
         public void Set()
