@@ -31,18 +31,12 @@ namespace Project.Scripts.Game.GameRoot
         private bool _isLoadingScene;
 
         private UIRootView _uiRoot;
-        private IPauseService _pauseService;
 
         [Inject]
         private void Construct(
-            UIRootView uiRoot,
-            IPauseService pauseService)
+            UIRootView uiRoot)
         {
             _uiRoot = uiRoot;
-            _pauseService = pauseService;
-
-            EventSystem eventSystem = FindAnyObjectByType<EventSystem>();
-            _pauseService.GetEventSystem(eventSystem);
         }
 
         private async void Start()
@@ -53,25 +47,6 @@ namespace Project.Scripts.Game.GameRoot
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
             await StartGame();
-
-            _pauseService.OnPlayGame();
-
-            YG2.onShowWindowGame += _pauseService.OnPlayGame;
-            YG2.onHideWindowGame += _pauseService.OnStopGameWithMusic;
-            YG2.onOpenAnyAdv += _pauseService.OnStopGameWithMusic;
-            YG2.onOpenAnyAdv += _pauseService.DisableEventSystem;
-            YG2.onCloseAnyAdv += _pauseService.EnableEventSystem;
-            YG2.onCloseInterAdv += _pauseService.OnPlayGame;
-        }
-
-        private void OnDestroy()
-        {
-            YG2.onShowWindowGame -= _pauseService.OnPlayGame;
-            YG2.onHideWindowGame -= _pauseService.OnStopGameWithMusic;
-            YG2.onOpenAnyAdv -= _pauseService.OnStopGameWithMusic;
-            YG2.onOpenAnyAdv -= _pauseService.DisableEventSystem;
-            YG2.onCloseAnyAdv -= _pauseService.EnableEventSystem;
-            YG2.onCloseInterAdv -= _pauseService.OnPlayGame;
         }
 
         private async UniTask StartGame()

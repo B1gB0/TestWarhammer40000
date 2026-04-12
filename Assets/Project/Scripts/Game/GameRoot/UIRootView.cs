@@ -20,15 +20,13 @@ namespace Project.Scripts.Game.GameRoot
         [SerializeField] private Button _settingsButton;
 
         private AudioSoundsService _audioSoundsService;
-        private IPauseService _pauseService;
 
         public UIStateMachine UIStateMachine { get; private set; }
 
         [Inject]
-        private void Construct(AudioSoundsService audioSoundsService, IPauseService pauseService)
+        private void Construct(AudioSoundsService audioSoundsService)
         {
             _audioSoundsService = audioSoundsService;
-            _pauseService = pauseService;
         }
 
         private void Awake()
@@ -69,8 +67,6 @@ namespace Project.Scripts.Game.GameRoot
             
             if (SceneManager.GetActiveScene().name == Scenes.MainMenu)
                 return;
-
-            _pauseService.OnStopGameWithoutMusic();
         }
 
         private void ShowUIScene()

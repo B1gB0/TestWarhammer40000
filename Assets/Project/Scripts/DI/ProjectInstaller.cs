@@ -50,8 +50,20 @@ namespace Project.Scripts.DI
                 Resolution.Lazy);
             
             builder.RegisterType(
-                typeof(PauseService),
-                new [] {typeof(IPauseService)},
+                typeof(CharacterService),
+                new [] {typeof(ICharacterService)},
+                Lifetime.Singleton,
+                Resolution.Lazy);
+            
+            builder.RegisterType(
+                typeof(AbilityService),
+                new [] {typeof(IAbilityService)},
+                Lifetime.Singleton,
+                Resolution.Lazy);
+            
+            builder.RegisterType(
+                typeof(ModificationService),
+                new [] {typeof(IModificationService)},
                 Lifetime.Singleton,
                 Resolution.Lazy);
         }
