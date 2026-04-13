@@ -12,7 +12,10 @@ namespace Project.Scripts.UI.View
         {
             for (int i = 0; i < _portraitViews.Count && i < partyViewModel.Slots.Count; i++)
             {
-                _portraitViews[i].Bind(partyViewModel.Slots[i], partyViewModel.SelectedCharacter);
+                _portraitViews[i].Bind(
+                    partyViewModel.Slots[i],
+                    partyViewModel.SelectedCharacter,
+                    partyViewModel.Characters[i]);
             }
             for (int i = partyViewModel.Slots.Count; i < _portraitViews.Count; i++)
             {

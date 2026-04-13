@@ -22,8 +22,6 @@ namespace Project.Scripts.Database.Data
 
         public async UniTask LoadSprites()
         {
-            Debug.Log(_name);
-            Debug.Log(_smallPortraitId);
             var portraitOperation = Addressables.LoadAssetAsync<Sprite>(_name);
             var smallPortraitOperation = Addressables.LoadAssetAsync<Sprite>(_smallPortraitId);
             

@@ -15,12 +15,15 @@ namespace Project.Scripts.UI.View
         private CharacterViewModel _viewModel;
         private CompositeDisposable _disposables = new();
 
-        public void Bind(CharacterViewModel viewModel, ReactiveProperty<Character> selectedCharacter)
+        public void Bind(
+            CharacterViewModel viewModel,
+            ReactiveProperty<Character> selectedCharacter,
+            Character character)
         {
             _viewModel = viewModel;
             _disposables.Clear();
             
-            _portrait.sprite = viewModel.SmallPortrait.CurrentValue;
+            _portrait.sprite = character.Data.SmallPortraitSprite;
             _button.onClick.AddListener(OnButtonClick);
             
             selectedCharacter
