@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5777840073280891023}
   - component: {fileID: 6299083831116932700}
+  - component: {fileID: 631526702500091979}
   m_Layer: 5
   m_Name: AbilityView
   m_TagString: Untagged
@@ -59,6 +60,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a922d5fc89dd6d84684ef16573c6307c, type: 3}
   - {fileID: 21300000, guid: 326290295e523784e8870ae6b29b29f8, type: 3}
   - {fileID: 21300000, guid: 5ace976fa4704e548b0538da780d6419, type: 3}
+--- !u!114 &631526702500091979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246069465009174600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 124
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &3512640928296767508
 GameObject:
   m_ObjectHideFlags: 0
