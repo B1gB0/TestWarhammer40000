@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Project.Scripts.Game.Gameplay.Root.View;
 using Project.Scripts.Game.GameRoot;
 using Project.Scripts.Services;
+using Project.Scripts.UI.Panel;
 using Project.Scripts.UI.View;
 using R3;
 using Reflex.Attributes;
@@ -57,24 +58,14 @@ namespace Project.Scripts.Game.Gameplay
 
             _uiScene = Instantiate(_sceneUIRootPrefab);
 
-            // _viewFactory.GetUIRootAndUIScene(uiRoot, _uiScene, _container);
-
-
             uiRoot.AttachSceneUI(_uiScene.gameObject);
-            
-            var container = gameObject.scene.GetSceneContainer();
-            GameObjectInjector.InjectRecursive(uiRoot.gameObject, container);
+
+            _viewFactory.GetUIRootAndUIScene(uiRoot, _uiScene, _container);
 
             _uiScene.GetUIStateMachine(uiRoot.UIStateMachine);
 
+            CharacterPanel characterPanel = await _viewFactory.CreateCharacterPanel();
 
-            // uiRoot.ExitPanel.OnExitToMainMenu += GetMainMenuExitParameters;
-            //  uiRoot.ExitPanel.OnExitToMainMenu += _uiScene.HandleGoToNextSceneButtonClick;
-            
-            //Вот здесь можно писать код для механик
-            
-            
-            
 
             var exitSceneSignalSubject = new Subject<Unit>();
             _uiScene.Bind(exitSceneSignalSubject);

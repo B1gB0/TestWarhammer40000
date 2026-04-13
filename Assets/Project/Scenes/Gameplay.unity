@@ -353,6 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1459704150}
   - component: {fileID: 1459704149}
+  - component: {fileID: 1459704151}
   m_Layer: 0
   m_Name: EntryPoint
   m_TagString: Untagged
@@ -373,6 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneUIRootPrefab: {fileID: 4392302739474468379, guid: abdaa8a1222e2bb41b19e13af2fdd7bf, type: 3}
+  _viewFactory: {fileID: 1459704151}
 --- !u!4 &1459704150
 Transform:
   m_ObjectHideFlags: 0
@@ -388,6 +390,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1459704151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459704148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e04e8e42550441c936f13d4526929f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

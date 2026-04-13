@@ -66,6 +66,12 @@ namespace Project.Scripts.DI
                 new [] {typeof(IModificationService)},
                 Lifetime.Singleton,
                 Resolution.Lazy);
+            
+            builder.RegisterType(
+                typeof(DataBaseService),
+                new [] {typeof(IDataBaseService)},
+                Lifetime.Singleton,
+                Resolution.Lazy);
         }
 
         private void CreateMonoServices()

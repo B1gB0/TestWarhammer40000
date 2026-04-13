@@ -1,13 +1,9 @@
-using Cysharp.Threading.Tasks;
-using Project.Scripts.Audio.Sounds;
 using Project.Scripts.Services;
 using Project.Scripts.UI.Panel;
 using Project.Scripts.UI.StateMachine;
 using Project.Scripts.UI.StateMachine.States;
 using Reflex.Attributes;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Project.Scripts.Game.GameRoot
 {
@@ -16,8 +12,6 @@ namespace Project.Scripts.Game.GameRoot
         [SerializeField] private UISceneContainer _uiSceneContainer;
 
         [SerializeField] private LoadingPanel _loadingPanel;
-        [SerializeField] private SettingsPanel _settingsPanel;
-        [SerializeField] private Button _settingsButton;
 
         private AudioSoundsService _audioSoundsService;
 
@@ -35,20 +29,6 @@ namespace Project.Scripts.Game.GameRoot
             UIStateMachine.AddState(new LoadingPanelState(_loadingPanel));
         }
 
-        private void OnEnable()
-        {
-            _settingsPanel.OnBackToSceneButtonPressed += ShowUIScene;
-            _settingsButton.onClick.AddListener(StopGame);
-            _settingsButton.onClick.AddListener(_settingsPanel.Show);
-        }
-
-        private void OnDisable()
-        {
-            _settingsPanel.OnBackToSceneButtonPressed -= ShowUIScene;
-            _settingsButton.onClick.RemoveListener(StopGame);
-            _settingsButton.onClick.RemoveListener(_settingsPanel.Show);
-        }
-
         public void ShowLoadingProgress(float progress)
         {
             _loadingPanel.SetProgressText(progress);
@@ -59,27 +39,6 @@ namespace Project.Scripts.Game.GameRoot
             ClearSceneUI();
 
             sceneUI.transform.SetParent(_uiSceneContainer.transform, false);
-        }
-
-        private void StopGame()
-        {
-            _audioSoundsService.PlaySound(SoundsType.UIButtonClick).Forget();
-            
-            if (SceneManager.GetActiveScene().name == Scenes.MainMenu)
-                return;
-        }
-
-        private void ShowUIScene()
-        {
-            _audioSoundsService.PlaySound(SoundsType.UIButtonClick).Forget();
-
-            var sceneName = SceneManager.GetActiveScene().name;
-
-            if (sceneName == Scenes.MainMenu)
-                UIStateMachine.EnterIn<MainMenuState>();
-
-            if (sceneName != Scenes.MainMenu)
-                UIStateMachine.EnterIn<GameplayState>();
         }
 
         private void ClearSceneUI()
