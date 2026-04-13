@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef3fec2a7ec407ca35a4be2aea3b114, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modificationViewPrefab: {fileID: 218994274206934954, guid: fcd840ce948b68f47b0a1a67e1e57489, type: 3}
   _modificationViews: []
   <Content>k__BackingField: {fileID: 1732000503201350519}
 --- !u!1 &5882964975009158788
@@ -421,7 +422,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5045092922411688983}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.60422164
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

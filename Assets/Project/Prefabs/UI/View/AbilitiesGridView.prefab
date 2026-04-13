@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8c24ae9ccd499ca9d724e30b3f3aaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _abilityViewPrefab: {fileID: 6299083831116932700, guid: b2786eb3c0bd9474b9d646e27dfe0f0f, type: 3}
   _abilityViews: []
   <Content>k__BackingField: {fileID: 4314153148984091792}
 --- !u!1001 &1377740863326767545

@@ -17,8 +17,23 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 5908e992d0cddcb4a92d54cc73efef08
   m_SerializeEntries:
+  - m_GUID: 010f8abbc69905a46a52b62376ba729c
+    m_Address: blade_shroud_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0edb23ba954801a4f8f4a3e90d2e2731
+    m_Address: trembling_voice_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 11e798ec100699040a3f37a87ed4ea12
     m_Address: small_avrelia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19813bc2fe84ec8478e1d86645ff5ad5
+    m_Address: offhand_shot_2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,8 +52,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3232a07f75d864a49ba69e2a5057e579
+    m_Address: bring_it_down_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3324bbfbbd5dfe64d894b824498b7f03
     m_Address: Jae Heydari
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b62d93575d0a6342acc0dd48c32f294
+    m_Address: blade_shroud
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 47fcd4369de757c49a16b41bb15425b8
+    m_Address: syphon_life
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 567a22f6c1b76924bb07bbf5ff98c833
+    m_Address: blade_shroud_3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -62,8 +97,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 989c8656c198b1a4699dba5093cb0dfb
+    m_Address: despair
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afe20f6951e22e54880ea56efa3fe1b2
+    m_Address: bring_it_down
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b51fae0fb753be7438ece33b15d99dc9
     m_Address: AudioConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c40f636178b4c034293d02a2cbcf505d
+    m_Address: get_back_in_fight
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -74,6 +124,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c9dd6b9fae38fa140bbe8bf5457ec7e1
     m_Address: Avrelia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf544e209b46f1246845a8d5d5bff409
+    m_Address: trembling_voice
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -92,6 +147,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee31cc754847b8a40b46f5d4064bf6fc
+    m_Address: take_aim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f361a23934801ee4f92bfcf9e8cbf4ee
     m_Address: small_cassia
     m_ReadOnly: 0
@@ -99,6 +159,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f84646c881a16814b9c9078d6eeba58d
     m_Address: Cassia Orsellio
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: faf2bee786fcc264ba941814333b70be
+    m_Address: offhand_shot
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb4b365e1200b8b4a9fb938d615c8d8a
+    m_Address: assail
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

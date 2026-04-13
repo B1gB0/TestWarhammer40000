@@ -1,13 +1,25 @@
 ﻿using Project.Scripts.UI.View;
+using Project.Scripts.UI.ViewModel;
 using UnityEngine;
 
 namespace Project.Scripts.UI.Panel
 {
     public class CharacterPanel : View.View
     {
-        [field: SerializeField] public AbilitiesGridView AbilitiesGridView { get; private set; }
-        [field: SerializeField] public ModificationsScrollView ModificationsScrollView { get; private set; }
-        [field: SerializeField] public PartyView PartyView { get; private set; }
-        [field: SerializeField] public CharacterView CharacterView { get; private set; }
+        [SerializeField] private PartyView _partyView;
+        [SerializeField] private CharacterView _characterView;
+        [SerializeField] private AbilitiesGridView _abilitiesGridView;
+        [SerializeField] private ModificationsScrollView _modificationsScrollView;
+
+        private CharacterPanelViewModel _viewModel;
+
+        public void Bind(CharacterPanelViewModel viewModel)
+        {
+            _viewModel = viewModel;
+            _partyView.Bind(viewModel.PartyViewModel);
+            _characterView.Bind(viewModel.CharacterViewModel);
+            _abilitiesGridView.Bind(viewModel.AbilitiesViewModel);
+            _modificationsScrollView.Bind(viewModel.ModificationsViewModel);
+        }
     }
 }

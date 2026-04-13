@@ -37,7 +37,7 @@ namespace Project.Scripts.Services
             return UniTask.CompletedTask;
         }
 
-        public List<Ability> CreateAllAbilitiesByCount(int count)
+        public async UniTask<List<Ability>>  CreateAllAbilitiesByCount(int count)
         {
             if (count <= 0)
                 return new List<Ability>();
@@ -54,14 +54,18 @@ namespace Project.Scripts.Services
             int uniqueAbilities = Math.Min(count, availableCount);
             for (int i = 0; i < uniqueAbilities; i++)
             {
-                result.Add(new Ability(shuffled[i]));
+                Ability ability = new Ability(shuffled[i]);
+                await ability.Data.LoadIconAsync();
+                result.Add(ability);
             }
             
             int remaining = count - uniqueAbilities;
             for (int i = 0; i < remaining; i++)
             {
                 int randomIndex = _random.Next(availableCount);
-                result.Add(new Ability(allDataList[randomIndex]));
+                Ability ability = new Ability(allDataList[randomIndex]);
+                await ability.Data.LoadIconAsync();
+                result.Add(ability);
             }
 
             return result;

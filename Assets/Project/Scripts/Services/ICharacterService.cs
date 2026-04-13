@@ -1,9 +1,10 @@
-﻿using Project.Scripts.Entity;
+﻿using Cysharp.Threading.Tasks;
+using Project.Scripts.Entity;
 
 namespace Project.Scripts.Services
 {
     public interface ICharacterService : IService
     {
-        public Character CreateCharacter(int indexCharacter, int countAbilities, int countModifications);
+        public UniTask<Character> CreateRandomUniqueCharacter(int countAbilities, int countModifications);
     }
 }

@@ -53,7 +53,12 @@ MonoBehaviour:
   _icon: {fileID: 662398712734243737}
   _iconOfModification: {fileID: 7905397898424349070}
   _backgroundOfModification: {fileID: 709922920573848324}
-  _iconSpritesOfModification: []
+  _iconSpritesOfModification:
+  - {fileID: 21300000, guid: d6f73ff3fa83e254ab38e0ac2281bcff, type: 3}
+  - {fileID: 21300000, guid: 3c50da9dc65b6bb48aaf6b643b50d87e, type: 3}
+  - {fileID: 21300000, guid: a922d5fc89dd6d84684ef16573c6307c, type: 3}
+  - {fileID: 21300000, guid: 326290295e523784e8870ae6b29b29f8, type: 3}
+  - {fileID: 21300000, guid: 5ace976fa4704e548b0538da780d6419, type: 3}
 --- !u!1 &3512640928296767508
 GameObject:
   m_ObjectHideFlags: 0

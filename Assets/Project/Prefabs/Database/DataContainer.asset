@@ -93,18 +93,24 @@ MonoBehaviour:
     - _name: Cassia Orsellio
       _health: 120
       _armor: 70
+      _smallPortraitId: small_cassia
     - _name: Jae Heydari
       _health: 115
       _armor: 115
+      _smallPortraitId: small_jae
     - _name: Argenta
       _health: 150
       _armor: 170
+      _smallPortraitId: small_argenta
     - _name: Irliet Lanaviss
       _health: 60
       _armor: 110
+      _smallPortraitId: small_irliet
     - _name: Acventus
       _health: 80
       _armor: 100
+      _smallPortraitId: small_acventus
     - _name: Avrelia
       _health: 70
       _armor: 80
+      _smallPortraitId: small_avrelia
