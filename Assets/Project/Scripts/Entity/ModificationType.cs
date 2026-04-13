@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.Modifications
+﻿namespace Project.Scripts.Entity
 {
     public enum ModificationType
     {

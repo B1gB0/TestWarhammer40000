@@ -1,5 +1,5 @@
 ﻿using System;
-using Project.Scripts.Modifications;
+using Project.Scripts.Entity;
 using UnityEngine;
 
 namespace Project.Scripts.Database.Data

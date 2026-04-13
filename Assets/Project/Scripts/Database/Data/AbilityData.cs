@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
-using Project.Scripts.Modifications;
+using Project.Scripts.Entity;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -32,11 +32,6 @@ namespace Project.Scripts.Database.Data
         
         public async UniTask LoadIconAsync()
         {
-            if (string.IsNullOrEmpty(_id))
-            {
-                Debug.LogWarning($"У способности {Name} не указан адрес иконки");
-                return;
-            }
             var handle = Addressables.LoadAssetAsync<Sprite>(_id);
             IconSprite = await handle;
         }

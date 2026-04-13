@@ -17,6 +17,11 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 5908e992d0cddcb4a92d54cc73efef08
   m_SerializeEntries:
+  - m_GUID: 11e798ec100699040a3f37a87ed4ea12
+    m_Address: small_avrelia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1c5ffaf106030bc4195d45f0f5e746df
     m_Address: DataContainer
     m_ReadOnly: 0
@@ -27,8 +32,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c0dca0d03534ac46b43fd3a033af3c3
+    m_Address: Argenta
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3324bbfbbd5dfe64d894b824498b7f03
+    m_Address: Jae Heydari
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59ca3132f38f3284cb36978af09f1364
     m_Address: CharacterPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 648ed0c059e27844c8d40dc04ebd927c
+    m_Address: Irliet Lanaviss
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,8 +57,48 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 80ab26f00e39e6649bac0600bf6ebc30
+    m_Address: small_jae
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b51fae0fb753be7438ece33b15d99dc9
     m_Address: AudioConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c689fe7ab50abf64385ec4f438191bfc
+    m_Address: small_argenta
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9dd6b9fae38fa140bbe8bf5457ec7e1
+    m_Address: Avrelia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5182da23dcd5dc44a07c4a9e35ef81d
+    m_Address: Acventus
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3c7d7ea28ae4ad41b6e381ba92d9a0a
+    m_Address: small_acventus
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb7abec35816e2f4b9fd1f8969657dd3
+    m_Address: small_irliet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f361a23934801ee4f92bfcf9e8cbf4ee
+    m_Address: small_cassia
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f84646c881a16814b9c9078d6eeba58d
+    m_Address: Cassia Orsellio
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

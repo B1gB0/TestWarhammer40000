@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Project.Scripts.Database.Data;
-using Project.Scripts.Modifications;
 
 namespace Project.Scripts.Entity
 {
