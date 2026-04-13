@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Project.Scripts.Game.Gameplay.Root.View;
 using Project.Scripts.Game.GameRoot;
 using Project.Scripts.Services;
+using Project.Scripts.UI.View;
 using R3;
 using Reflex.Attributes;
 using Reflex.Core;
@@ -14,7 +15,7 @@ namespace Project.Scripts.Game.Gameplay
     public class GameplayEntryPoint : MonoBehaviour
     {
         [SerializeField] private UIGameplayRootBinder _sceneUIRootPrefab;
-        // [SerializeField] private ViewFactory _viewFactory;
+        [SerializeField] private ViewFactory _viewFactory;
 
         private UIRootView _uiRoot;
         private UIGameplayRootBinder _uiScene;

@@ -437,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1648625955714278691}
+  - component: {fileID: 971999965505085736}
   m_Layer: 5
   m_Name: CharacterView
   m_TagString: Untagged
@@ -468,6 +469,22 @@ RectTransform:
   m_AnchoredPosition: {x: 14, y: 27}
   m_SizeDelta: {x: 552, y: 965}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &971999965505085736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6166730793071498022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047b8bf6d995416eb63882e66cf0d1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portrait: {fileID: 5093246719706972664}
+  _name: {fileID: 886888876923874863}
+  _health: {fileID: 6138957824913550661}
+  _armor: {fileID: 8859443170430831650}
 --- !u!1 &6533505114164755599
 GameObject:
   m_ObjectHideFlags: 0
