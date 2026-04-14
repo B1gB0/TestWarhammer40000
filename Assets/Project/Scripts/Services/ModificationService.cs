@@ -19,6 +19,7 @@ namespace Project.Scripts.Services
         
         public ReactiveProperty<ModificationViewModel> CurrentDraggedModification { get; } = new();
         public ReactiveProperty<ModificationViewModel> HoveredModification { get; } = new();
+        public ReactiveProperty<bool> IsDragging { get; } = new();
         
         public bool IsInitiated { get; private set; }
 
@@ -72,6 +73,31 @@ namespace Project.Scripts.Services
             }
 
             return result;
+        }
+        
+        private ModificationDragHandler _activeHandler;
+
+        public void RegisterDragHandler(ModificationDragHandler handler)
+        {
+            _activeHandler = handler;
+            IsDragging.Value = true;
+        }
+
+        public void UnregisterDragHandler(ModificationDragHandler handler)
+        {
+            if (_activeHandler == handler)
+            {
+                _activeHandler = null;
+                IsDragging.Value = false;
+            }
+        }
+
+        public void ForceEndDrag()
+        {
+            _activeHandler.CleanupGhost();
+            _activeHandler = null;
+            IsDragging.Value = false;
+            CurrentDraggedModification.Value = null;
         }
     }
 }

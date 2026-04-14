@@ -62,7 +62,11 @@ namespace Project.Scripts.UI.View
                 .AddTo(_disposables);
 
             _viewModel.HasModification
-                .Subscribe(hasModification => _iconOfModification.gameObject.SetActive(hasModification))
+                .Subscribe(hasModification =>
+                {
+                    _iconOfModification.gameObject.SetActive(hasModification);
+                    _backgroundOfModification.sprite = _iconSpritesOfUnions[5];
+                })
                 .AddTo(_disposables);
 
             _abilityDropHandler.Init(viewModel, _modificationService, _abilityService);

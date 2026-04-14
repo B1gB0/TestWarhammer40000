@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 namespace Project.Scripts.Entity
 {
-    public class AbilityDropHandler : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+    public class AbilityDropHandler :
+        MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         private AbilityViewModel _viewModel;
 
@@ -21,16 +22,23 @@ namespace Project.Scripts.Entity
             _modificationService = modificationService;
             _abilityService = abilityService;
         }
+        
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                _viewModel?.DetachModification();
+            }
+        }
 
         public void OnDrop(PointerEventData eventData)
         {
             var draggedMod = _modificationService.CurrentDraggedModification.Value;
-            if (draggedMod == null)
-                return;
-            
+            if (draggedMod == null) return;
+
             if (_viewModel.TryAttachModification(draggedMod))
             {
-                _modificationService.CurrentDraggedModification.Value = null;
+                _modificationService.ForceEndDrag();
             }
         }
 
