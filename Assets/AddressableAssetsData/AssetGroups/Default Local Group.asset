@@ -103,6 +103,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 865c6acb18bfcdd4b9ef14cdf72cb13e
+    m_Address: UIButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Sound
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 989c8656c198b1a4699dba5093cb0dfb
     m_Address: despair
     m_ReadOnly: 0

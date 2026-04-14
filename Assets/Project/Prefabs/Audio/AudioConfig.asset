@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: AudioConfig
   m_EditorClassIdentifier: 
   Sounds:
+  - ClipName: UIButton
+    Clip: {fileID: 8300000, guid: 865c6acb18bfcdd4b9ef14cdf72cb13e, type: 3}
+    IsLoop: 0
+    Volume: 0.5
   - ClipName: Warhammer_40000_imperial_guard
     Clip: {fileID: 8300000, guid: 39f6a55a4d936814e9cd8be5cdbd795f, type: 3}
     IsLoop: 1

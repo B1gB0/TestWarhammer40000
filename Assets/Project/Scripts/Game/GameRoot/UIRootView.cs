@@ -1,8 +1,6 @@
-using Project.Scripts.Services;
 using Project.Scripts.UI.Panel;
 using Project.Scripts.UI.StateMachine;
 using Project.Scripts.UI.StateMachine.States;
-using Reflex.Attributes;
 using UnityEngine;
 
 namespace Project.Scripts.Game.GameRoot
@@ -12,16 +10,8 @@ namespace Project.Scripts.Game.GameRoot
         [SerializeField] private UISceneContainer _uiSceneContainer;
         [SerializeField] private LoadingPanel _loadingPanel;
 
-        private AudioSoundsService _audioSoundsService;
-
         [field: SerializeField] public Canvas UICanvas { get; private set; }
         public UIStateMachine UIStateMachine { get; private set; }
-
-        [Inject]
-        private void Construct(AudioSoundsService audioSoundsService)
-        {
-            _audioSoundsService = audioSoundsService;
-        }
 
         private void Awake()
         {

@@ -1,4 +1,3 @@
-using Project.Scripts.Audio.Sounds;
 using Project.Scripts.Game.Gameplay;
 using Project.Scripts.Game.GameRoot;
 using Project.Scripts.Game.MainMenu.Root.View;
@@ -29,14 +28,10 @@ namespace Project.Scripts.Game.MainMenu
         private async void Start()
         {
             await _audioSoundsService.Init();
-            
-            // _audioSoundsService.PlayMusic(SoundsType.MainMenuMusic);
         }
 
         public Observable<MainMenuExitParameters> Run(UIRootView uiRoot, MainMenuEnterParameters enterParameters)
         {
-            // uiRoot.ExitButton.gameObject.SetActive(false);
-
             _uiScene = Instantiate(_sceneUIRootPrefab);
             uiRoot.AttachSceneUI(_uiScene.gameObject);
 
@@ -57,7 +52,7 @@ namespace Project.Scripts.Game.MainMenu
 
         private void GetMainMenuExitParameters()
         {
-            var sceneName = Scenes.VillageHub;
+            var sceneName = Scenes.Gameplay;
 
             var gameplayEnterParameters = new GameplayEnterParameters(sceneName);
 

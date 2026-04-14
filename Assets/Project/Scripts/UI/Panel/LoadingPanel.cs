@@ -10,13 +10,13 @@ namespace Project.Scripts.UI.Panel
 
         [SerializeField] private TMP_Text _progressText;
 
-        public void Show()
+        public override void Show()
         {
             gameObject.SetActive(true);
             _progressText.text = $"{StartProgress * TextFormat:0}%";
         }
 
-        public void Hide()
+        public override void Hide()
         {
             gameObject.SetActive(false);
         }
