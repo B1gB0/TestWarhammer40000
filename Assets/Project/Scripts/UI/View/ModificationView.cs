@@ -15,11 +15,12 @@ namespace Project.Scripts.UI.View
     {
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _modificationTypeName;
-        
+
         [SerializeField] private Image _icon;
         [SerializeField] private Image _union;
         [SerializeField] private Image _nonActive;
-        
+        [SerializeField] private Image _outline;
+
         [SerializeField] private ModificationDragHandler _modificationDragHandler;
         [SerializeField] private List<Sprite> _iconSprites;
 
@@ -75,12 +76,15 @@ namespace Project.Scripts.UI.View
                 })
                 .AddTo(_disposables);
 
-            _viewModel.IsCompatibleHighlighted
-                .Subscribe(highlighted => GetComponent<Image>().color = highlighted ? Color.green : Color.white)
-                .AddTo(_disposables);
+            // _viewModel.IsCompatibleHighlighted
+            //     .Subscribe(highlighted => GetComponent<Image>().color = highlighted ? Color.green : Color.white)
+            //     .AddTo(_disposables);
 
             _viewModel.IsEquipped
-                .Subscribe(isEquipped => gameObject.SetActive(!isEquipped))
+                .Subscribe(isEquipped =>
+                {
+                    _nonActive.gameObject.SetActive(isEquipped);
+                })
                 .AddTo(_disposables);
 
             _modificationService.HoveredAbility
@@ -94,11 +98,11 @@ namespace Project.Scripts.UI.View
             viewModel.IsCompatibleHighlighted
                 .Subscribe(highlighted =>
                 {
-                    _nonActive.gameObject.SetActive(highlighted);
+                    _outline.gameObject.SetActive(highlighted);
                 })
                 .AddTo(_disposables);
 
-            _modificationDragHandler.Init(this, viewModel, _modificationService);
+            _modificationDragHandler.Init(viewModel, _modificationService);
         }
 
         public void Dispose()

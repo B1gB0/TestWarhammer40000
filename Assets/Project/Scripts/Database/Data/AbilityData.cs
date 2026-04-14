@@ -22,7 +22,7 @@ namespace Project.Scripts.Database.Data
         {
             get
             {
-                return _compatibleTypes?.Split(';')
+                return _compatibleTypes?.Split(',')
                     .Select(s => Enum.Parse<ModificationType>(s.Trim()))
                     .ToList() ?? new List<ModificationType>();
             }

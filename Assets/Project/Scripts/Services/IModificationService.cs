@@ -9,6 +9,7 @@ namespace Project.Scripts.Services
     {
         public ReactiveProperty<ModificationViewModel> CurrentDraggedModification { get; }
         public ReactiveProperty<AbilityViewModel> HoveredAbility { get; }
+        public ReactiveProperty<ModificationViewModel> HoveredModification { get; }
         public List<Modification> CreateAllModificationsByCount(int count);
     }
 }

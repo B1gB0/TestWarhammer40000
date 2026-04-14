@@ -1,19 +1,18 @@
 ﻿using Project.Scripts.Services;
 using Project.Scripts.UI.View;
 using Project.Scripts.UI.ViewModel;
-using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Project.Scripts.Entity
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class ModificationDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class ModificationDragHandler 
+        : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _draggedAlpha = 0.6f;
-
-        private ModificationView _modificationView;
+        
         private ModificationViewModel _viewModel;
         private RectTransform _rectTransform;
         private Vector2 _originalPosition;
@@ -28,11 +27,9 @@ namespace Project.Scripts.Entity
         }
 
         public void Init(
-            ModificationView parentView,
             ModificationViewModel viewModel,
             IModificationService modificationService)
         {
-            _modificationView = parentView;
             _viewModel = viewModel;
             _modificationService = modificationService;
         }
@@ -68,6 +65,24 @@ namespace Project.Scripts.Entity
             // Сбрасываем перетаскиваемый модификатор
             if (_modificationService.CurrentDraggedModification.Value == _viewModel)
                 _modificationService.CurrentDraggedModification.Value = null;
+        }
+        
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            // Подсвечиваем, если перетаскивается совместимый мод
+            // var draggedMod = _modificationService.CurrentDraggedModification.Value;
+            // if (draggedMod != null && _viewModel.IsCompatible(draggedMod))
+            // {
+            //     _viewModel.IsCompatibleHighlighted.Value = true;
+            // }
+            _modificationService.HoveredModification.Value = _viewModel;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            // _viewModel.IsCompatibleHighlighted.Value = false;
+            if (_modificationService.HoveredModification.Value == _viewModel)
+                _modificationService.HoveredModification.Value = null;
         }
     }
 }

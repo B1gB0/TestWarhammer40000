@@ -51,10 +51,10 @@ namespace Project.Scripts.UI.ViewModel
             mod.MarkAsDetached();
         }
         
-        public bool IsCompatible(ModificationViewModel modification)
+        public bool IsCompatible(ModificationViewModel modificationViewModel)
         {
-            if (modification == null) return false;
-            return CompatibleTypes.Contains(modification.ModificationType.Value);
+            if (modificationViewModel == null) return false;
+            return CompatibleTypes.Contains(modificationViewModel.ModificationType.Value);
         }
 
         public void Dispose()
