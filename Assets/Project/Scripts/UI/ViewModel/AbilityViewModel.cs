@@ -25,7 +25,9 @@ namespace Project.Scripts.UI.ViewModel
             Name = new ReactiveProperty<string>(ability.Data.Name);
             Icon = new ReactiveProperty<Sprite>(ability.Data.IconSprite);
             AttachedModification = new ReactiveProperty<ModificationViewModel>();
-            HasModification = AttachedModification.Select(mod => mod != null).ToBindableReactiveProperty();
+            HasModification = AttachedModification
+                .Select(mod => mod != null)
+                .ToBindableReactiveProperty();
             IsCompatibleHighlighted = new ReactiveProperty<bool>(false);
         }
 

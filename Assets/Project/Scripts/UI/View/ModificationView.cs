@@ -76,10 +76,6 @@ namespace Project.Scripts.UI.View
                 })
                 .AddTo(_disposables);
 
-            // _viewModel.IsCompatibleHighlighted
-            //     .Subscribe(highlighted => GetComponent<Image>().color = highlighted ? Color.green : Color.white)
-            //     .AddTo(_disposables);
-
             _viewModel.IsEquipped
                 .Subscribe(isEquipped =>
                 {

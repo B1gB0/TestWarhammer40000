@@ -63,6 +63,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a922d5fc89dd6d84684ef16573c6307c, type: 3}
   - {fileID: 21300000, guid: 326290295e523784e8870ae6b29b29f8, type: 3}
   - {fileID: 21300000, guid: 5ace976fa4704e548b0538da780d6419, type: 3}
+  _iconSpritesOfUnions:
+  - {fileID: 21300000, guid: 853ae9d9e9e0fad4b8e540839e2636d8, type: 3}
+  - {fileID: 21300000, guid: 7d71dbe299bc701479efbc72a4615b3e, type: 3}
+  - {fileID: 21300000, guid: 38db8f32c1253e1439da419a9436bf10, type: 3}
+  - {fileID: 21300000, guid: 0bf49dd39af9e9c4da723b32cd1fb684, type: 3}
+  - {fileID: 21300000, guid: 14d4947c656cbb741ade9b9419a1a1b7, type: 3}
 --- !u!114 &631526702500091979
 MonoBehaviour:
   m_ObjectHideFlags: 0

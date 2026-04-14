@@ -2,7 +2,6 @@
 using Project.Scripts.UI.ViewModel;
 using R3;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Project.Scripts.UI.View
 {

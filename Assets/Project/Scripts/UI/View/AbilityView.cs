@@ -21,7 +21,9 @@ namespace Project.Scripts.UI.View
         [SerializeField] private Image _outline;
 
         [SerializeField] private AbilityDropHandler _abilityDropHandler;
+        
         [SerializeField] private List<Sprite> _iconSpritesOfModification;
+        [SerializeField] private List<Sprite> _iconSpritesOfUnions;
 
         private AbilityViewModel _viewModel;
         private CompositeDisposable _disposables = new();
@@ -79,8 +81,10 @@ namespace Project.Scripts.UI.View
             if (modificationViewModel != null)
             {
                 SetIconByType(modificationViewModel.ModificationType.CurrentValue);
+                SetUnionByType(modificationViewModel.ModificationType.CurrentValue);
 
                 _modTypeSubscription.Disposable = modificationViewModel.ModificationType.Subscribe(SetIconByType);
+                _modTypeSubscription.Disposable = modificationViewModel.ModificationType.Subscribe(SetUnionByType);
             }
             else
             {
@@ -95,6 +99,15 @@ namespace Project.Scripts.UI.View
                 _iconOfModification.sprite = _iconSpritesOfModification[index];
             else
                 _iconOfModification.sprite = null;
+        }
+
+        private void SetUnionByType(ModificationType type)
+        {
+            int index = (int)type;
+            if (index >= 0 && index < _iconSpritesOfUnions.Count)
+                _backgroundOfModification.sprite = _iconSpritesOfUnions[index];
+            else
+                _backgroundOfModification.sprite = null;
         }
 
         public void Dispose()

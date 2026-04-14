@@ -1,5 +1,4 @@
 ﻿using Project.Scripts.Services;
-using Project.Scripts.UI.View;
 using Project.Scripts.UI.ViewModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,19 +24,15 @@ namespace Project.Scripts.Entity
             var draggedMod = _modificationService.CurrentDraggedModification.Value;
             if (draggedMod == null)
                 return;
-
-            // Пытаемся прикрепить
+            
             if (_viewModel.TryAttachModification(draggedMod))
             {
-                // Успешно прикреплено — сбрасываем перетаскиваемый модификатор
                 _modificationService.CurrentDraggedModification.Value = null;
-                // ViewModel модификатора уже обновила своё состояние (IsEquipped = true)
             }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            // Подсвечиваем, если перетаскивается совместимый мод
             var draggedMod = _modificationService.CurrentDraggedModification.Value;
             if (draggedMod != null && _viewModel.IsCompatible(draggedMod))
             {
