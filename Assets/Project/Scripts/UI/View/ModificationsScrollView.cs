@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Project.Scripts.UI.ViewModel;
 using R3;
 using UnityEngine;
-using UnityEngine.UI;
 using CompositeDisposable = R3.CompositeDisposable;
 
 namespace Project.Scripts.UI.View
@@ -23,12 +22,12 @@ namespace Project.Scripts.UI.View
             _viewFactory = viewFactory;
             _disposables.Clear();
 
-            _viewModel.FreeModifications
-                .Subscribe(OnFreeModificationsChanged)
+            _viewModel.AllModificationViewModels
+                .Subscribe(OnAllModificationsChanged)
                 .AddTo(_disposables);
         }
 
-        private async void OnFreeModificationsChanged(
+        private async void OnAllModificationsChanged(
             IReadOnlyList<ModificationViewModel> modificationViewModels)
         {
             foreach (var view in _activeViews)

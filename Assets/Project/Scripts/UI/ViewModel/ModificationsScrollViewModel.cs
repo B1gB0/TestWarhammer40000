@@ -11,14 +11,15 @@ namespace Project.Scripts.UI.ViewModel
         private readonly ReactiveProperty<Character> _selectedCharacter;
         private readonly CompositeDisposable _disposables = new();
         
-        public ReactiveProperty<IReadOnlyList<ModificationViewModel>> FreeModifications { get; }
+        // public ReactiveProperty<IReadOnlyList<ModificationViewModel>> FreeModifications { get; }
+        public ReactiveProperty<IReadOnlyList<ModificationViewModel>> AllModificationViewModels { get; }
         
         private List<ModificationViewModel> _allModificationViews;
 
         public ModificationsScrollViewModel(ReactiveProperty<Character> selectedCharacter)
         {
             _selectedCharacter = selectedCharacter;
-            FreeModifications =
+            AllModificationViewModels =
                 new ReactiveProperty<IReadOnlyList<ModificationViewModel>>(Array.Empty<ModificationViewModel>());
 
             selectedCharacter
@@ -50,15 +51,17 @@ namespace Project.Scripts.UI.ViewModel
 
         private void UpdateFreeList()
         {
-            var free =
-                _allModificationViews.Where(slot => !slot.IsEquipped.Value).ToList();
-            FreeModifications.Value = free;
+            var sorted = _allModificationViews
+                .OrderBy(slot => slot.IsEquipped.Value)
+                .ToList();
+            
+            AllModificationViewModels.Value = sorted;
         }
 
         public void Dispose()
         {
             _disposables.Dispose();
-            FreeModifications.Dispose();
+            AllModificationViewModels.Dispose();
             if (_allModificationViews != null)
             {
                 foreach (var slot in _allModificationViews)
