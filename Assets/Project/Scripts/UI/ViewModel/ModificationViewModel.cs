@@ -10,11 +10,8 @@ namespace Project.Scripts.UI.ViewModel
 
         public ReactiveProperty<string> Name { get; }
         public ReactiveProperty<ModificationType> ModificationType { get; }
-        
         public ReactiveProperty<bool> IsEquipped { get; }
-        
         public ReactiveProperty<AbilityViewModel> AttachedAbility { get; }
-        
         public ReactiveProperty<bool> IsCompatibleHighlighted { get; }
 
         public ModificationViewModel(Modification modification)

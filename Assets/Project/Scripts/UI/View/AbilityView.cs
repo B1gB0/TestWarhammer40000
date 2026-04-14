@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Project.Scripts.Entity;
+using Project.Scripts.Services;
 using Project.Scripts.UI.ViewModel;
 using R3;
+using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,14 +14,25 @@ namespace Project.Scripts.UI.View
     public class AbilityView : View, IDisposable
     {
         [SerializeField] private TMP_Text _nameText;
+        
         [SerializeField] private Image _icon;
         [SerializeField] private Image _iconOfModification;
         [SerializeField] private Image _backgroundOfModification;
+        
+        [SerializeField] private AbilityDropHandler _abilityDropHandler;
         [SerializeField] private List<Sprite> _iconSpritesOfModification;
 
         private AbilityViewModel _viewModel;
         private CompositeDisposable _disposables = new();
         private SerialDisposable _modTypeSubscription = new SerialDisposable();
+
+        private IModificationService _modificationService;
+
+        [Inject]
+        private void Construct(IModificationService modificationService)
+        {
+            _modificationService = modificationService;
+        }
 
         public void Bind(AbilityViewModel viewModel)
         {
@@ -46,6 +59,8 @@ namespace Project.Scripts.UI.View
             _viewModel.HasModification
                 .Subscribe(hasModification => _iconOfModification.gameObject.SetActive(hasModification))
                 .AddTo(_disposables);
+            
+            _abilityDropHandler.Init(this, viewModel, _modificationService);
         }
 
         private void OnAttachedModificationChanged(ModificationViewModel modificationViewModel)

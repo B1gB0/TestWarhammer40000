@@ -13,13 +13,13 @@ namespace Project.Scripts.UI.Panel
 
         private CharacterPanelViewModel _viewModel;
 
-        public void Bind(CharacterPanelViewModel viewModel)
+        public void Bind(CharacterPanelViewModel viewModel, ViewFactory viewFactory)
         {
             _viewModel = viewModel;
             _partyView.Bind(viewModel.PartyViewModel);
             _characterView.Bind(viewModel.CharacterViewModel);
-            _abilitiesGridView.Bind(viewModel.AbilitiesViewModel);
-            _modificationsScrollView.Bind(viewModel.ModificationsViewModel);
+            _abilitiesGridView.Bind(viewModel.AbilitiesViewModel, viewFactory);
+            _modificationsScrollView.Bind(viewModel.ModificationsViewModel, viewFactory);
         }
     }
 }

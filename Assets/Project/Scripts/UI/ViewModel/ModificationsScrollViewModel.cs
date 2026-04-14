@@ -18,7 +18,8 @@ namespace Project.Scripts.UI.ViewModel
         public ModificationsScrollViewModel(ReactiveProperty<Character> selectedCharacter)
         {
             _selectedCharacter = selectedCharacter;
-            FreeModifications = new ReactiveProperty<IReadOnlyList<ModificationViewModel>>(Array.Empty<ModificationViewModel>());
+            FreeModifications =
+                new ReactiveProperty<IReadOnlyList<ModificationViewModel>>(Array.Empty<ModificationViewModel>());
 
             selectedCharacter
                 .Subscribe(OnCharacterChanged)
@@ -49,7 +50,8 @@ namespace Project.Scripts.UI.ViewModel
 
         private void UpdateFreeList()
         {
-            var free = _allModificationViews.Where(slot => !slot.IsEquipped.Value).ToList();
+            var free =
+                _allModificationViews.Where(slot => !slot.IsEquipped.Value).ToList();
             FreeModifications.Value = free;
         }
 

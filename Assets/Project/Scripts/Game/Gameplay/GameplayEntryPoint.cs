@@ -79,7 +79,7 @@ namespace Project.Scripts.Game.Gameplay
 
             CharacterPanel characterPanel = await _viewFactory.CreateCharacterPanel();
             CharacterPanelViewModel characterPanelViewModel = new CharacterPanelViewModel(_characters);
-            characterPanel.Bind(characterPanelViewModel);
+            characterPanel.Bind(characterPanelViewModel, _viewFactory);
 
             _audioSoundsService.PlayMusic(SoundsType.Warhammer_40000_imperial_guard);
             

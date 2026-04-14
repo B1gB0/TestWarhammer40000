@@ -7,8 +7,9 @@ namespace Project.Scripts.UI.ViewModel
 {
     public class AbilitiesGridViewModel
     {
-        public ReactiveProperty<IReadOnlyList<AbilityViewModel>> Slots { get; }
         private readonly CompositeDisposable _disposables = new();
+        
+        public ReactiveProperty<IReadOnlyList<AbilityViewModel>> Slots { get; }
 
         public AbilitiesGridViewModel(ReactiveProperty<Character> selectedCharacter)
         {

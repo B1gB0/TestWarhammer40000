@@ -13,6 +13,8 @@ namespace Project.Scripts.UI.View
     public class ViewFactory : MonoBehaviour
     {
         private const string CharacterPanelPath = "CharacterPanel";
+        private const string ModificationViewPath = "ModificationView";
+        private const string AbilityViewPath = "AbilityView";
 
         private IResourceService _resourceService;
         
@@ -42,8 +44,30 @@ namespace Project.Scripts.UI.View
             
             CharacterPanel characterPanel = characterPanelTemplate.GetComponent<CharacterPanel>();
             characterPanel.transform.SetParent(_uiScene.transform, false);
-            GameObjectInjector.InjectSingle(characterPanel.gameObject, _container);
+            GameObjectInjector.InjectRecursive(characterPanel.gameObject, _container);
             return characterPanel;
+        }
+        
+        public async UniTask<ModificationView> CreateModificationView(Transform content)
+        {
+            var modificationViewTemplate = await _resourceService.Load<GameObject>(ModificationViewPath);
+            modificationViewTemplate = Instantiate(modificationViewTemplate);
+            
+            ModificationView modificationView = modificationViewTemplate.GetComponent<ModificationView>();
+            modificationView.transform.SetParent(content, false);
+            GameObjectInjector.InjectSingle(modificationView.gameObject, _container);
+            return modificationView;
+        }
+        
+        public async UniTask<AbilityView> CreateAbilityView(Transform content)
+        {
+            var abilityViewTemplate = await _resourceService.Load<GameObject>(AbilityViewPath);
+            abilityViewTemplate = Instantiate(abilityViewTemplate);
+            
+            AbilityView abilityView = abilityViewTemplate.GetComponent<AbilityView>();
+            abilityView.transform.SetParent(content, false);
+            GameObjectInjector.InjectSingle(abilityView.gameObject, _container);
+            return abilityView;
         }
     }
 }

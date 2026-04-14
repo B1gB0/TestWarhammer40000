@@ -2,22 +2,24 @@
 using Project.Scripts.UI.ViewModel;
 using R3;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Project.Scripts.UI.View
 {
     public class AbilitiesGridView : View
     {
-        [SerializeField] private AbilityView _abilityViewPrefab;
-
         private AbilitiesGridViewModel _viewModel;
         private CompositeDisposable _disposables = new();
         private List<AbilityView> _activeViews = new();
+
+        private ViewFactory _viewFactory;
         
         [field: SerializeField] public Transform Content { get; private set; }
 
-        public void Bind(AbilitiesGridViewModel viewModel)
+        public void Bind(AbilitiesGridViewModel viewModel, ViewFactory viewFactory)
         {
             _viewModel = viewModel;
+            _viewFactory = viewFactory;
             _disposables.Clear();
             
             _viewModel.Slots
@@ -25,7 +27,7 @@ namespace Project.Scripts.UI.View
                 .AddTo(_disposables);
         }
 
-        private void OnSlotsChanged(IReadOnlyList<AbilityViewModel> abilityViewModels)
+        private async void OnSlotsChanged(IReadOnlyList<AbilityViewModel> abilityViewModels)
         {
             foreach (var view in _activeViews)
                 Destroy(view.gameObject);
@@ -36,9 +38,9 @@ namespace Project.Scripts.UI.View
             
             foreach (var abilityViewModel in abilityViewModels)
             {
-                var view = Instantiate(_abilityViewPrefab, Content);
-                view.Bind(abilityViewModel);
-                _activeViews.Add(view);
+                AbilityView abilityView = await _viewFactory.CreateAbilityView(Content);
+                abilityView.Bind(abilityViewModel);
+                _activeViews.Add(abilityView);
             }
         }
 
@@ -49,7 +51,7 @@ namespace Project.Scripts.UI.View
                 Destroy(view.gameObject);
             _activeViews.Clear();
         }
-
+        
         private void OnDestroy() => Dispose();
     }
 }

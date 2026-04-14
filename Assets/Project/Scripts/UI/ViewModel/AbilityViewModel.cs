@@ -13,11 +13,8 @@ namespace Project.Scripts.UI.ViewModel
 
         public ReactiveProperty<string> Name { get; }
         public ReactiveProperty<Sprite> Icon { get; }
-
         public ReactiveProperty<ModificationViewModel> AttachedModification { get; }
-
         public ReactiveProperty<bool> HasModification { get; }
-
         public ReactiveProperty<bool> IsCompatibleHighlighted { get; }
 
         public IReadOnlyList<ModificationType> CompatibleTypes => _ability.Data.CompatibleTypes;
@@ -53,6 +50,12 @@ namespace Project.Scripts.UI.ViewModel
             AttachedModification.Value = null;
             mod.MarkAsDetached();
         }
+        
+        public bool IsCompatible(ModificationViewModel modification)
+        {
+            if (modification == null) return false;
+            return CompatibleTypes.Contains(modification.ModificationType.Value);
+        }
 
         public void Dispose()
         {
@@ -62,12 +65,6 @@ namespace Project.Scripts.UI.ViewModel
             AttachedModification.Dispose();
             HasModification.Dispose();
             IsCompatibleHighlighted.Dispose();
-        }
-        
-        private bool IsCompatible(ModificationViewModel modification)
-        {
-            if (modification == null) return false;
-            return CompatibleTypes.Contains(modification.ModificationType.Value);
         }
     }
 }

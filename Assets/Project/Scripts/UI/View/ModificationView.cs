@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Project.Scripts.Entity;
 using Project.Scripts.Game.Constants;
+using Project.Scripts.Services;
 using Project.Scripts.UI.ViewModel;
 using R3;
+using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,27 +15,39 @@ namespace Project.Scripts.UI.View
     {
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _modificationTypeName;
+        
         [SerializeField] private Image _icon;
         [SerializeField] private Image _union;
+        [SerializeField] private Image _nonActive;
+        
+        [SerializeField] private ModificationDragHandler _modificationDragHandler;
         [SerializeField] private List<Sprite> _iconSprites;
 
         private ModificationViewModel _viewModel;
         private CompositeDisposable _disposables = new();
 
+        private IModificationService _modificationService;
+
+        [Inject]
+        private void Construct(IModificationService modificationService)
+        {
+            _modificationService = modificationService;
+        }
+
         public void Bind(ModificationViewModel viewModel)
         {
             _viewModel = viewModel;
             _disposables.Clear();
-            
+
             _viewModel.Name
                 .Subscribe(name => _nameText.text = name)
                 .AddTo(_disposables);
-            
+
             viewModel.ModificationType
                 .Subscribe(type =>
                 {
                     _modificationTypeName.text = type.ToString();
-                    
+
                     int index = (int)type;
                     if (index >= 0 && index < _iconSprites.Count)
                         _icon.sprite = _iconSprites[index];
@@ -60,14 +74,31 @@ namespace Project.Scripts.UI.View
                     }
                 })
                 .AddTo(_disposables);
-            
+
             _viewModel.IsCompatibleHighlighted
                 .Subscribe(highlighted => GetComponent<Image>().color = highlighted ? Color.green : Color.white)
                 .AddTo(_disposables);
-            
+
             _viewModel.IsEquipped
                 .Subscribe(isEquipped => gameObject.SetActive(!isEquipped))
                 .AddTo(_disposables);
+
+            _modificationService.HoveredAbility
+                .Subscribe(hoveredAbility =>
+                {
+                    bool compatible = hoveredAbility != null && hoveredAbility.IsCompatible(viewModel);
+                    viewModel.IsCompatibleHighlighted.Value = compatible;
+                })
+                .AddTo(_disposables);
+
+            viewModel.IsCompatibleHighlighted
+                .Subscribe(highlighted =>
+                {
+                    _nonActive.gameObject.SetActive(highlighted);
+                })
+                .AddTo(_disposables);
+
+            _modificationDragHandler.Init(this, viewModel, _modificationService);
         }
 
         public void Dispose()
