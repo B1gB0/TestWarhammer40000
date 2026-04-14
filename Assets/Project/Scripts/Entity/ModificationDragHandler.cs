@@ -12,12 +12,17 @@ namespace Project.Scripts.Entity
     {
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _draggedAlpha = 0.6f;
-        
+
+        private ModificationView _modificationView;
         private ModificationViewModel _viewModel;
         private RectTransform _rectTransform;
         private Vector2 _originalPosition;
+        
+        private GameObject _ghost;
+        private RectTransform _ghostRect;
 
         private IModificationService _modificationService;
+        private ViewFactory _viewFactory;
 
         private void Awake()
         {
@@ -27,62 +32,94 @@ namespace Project.Scripts.Entity
         }
 
         public void Init(
+            ModificationView view,
             ModificationViewModel viewModel,
-            IModificationService modificationService)
+            IModificationService modificationService,
+            ViewFactory viewFactory)
         {
+            _modificationView = view;
             _viewModel = viewModel;
             _modificationService = modificationService;
+            _viewFactory = viewFactory;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (_viewModel.IsEquipped.CurrentValue)
-                return; // Нельзя перетаскивать уже прикреплённый модификатор
+                return;
 
+            _ghost = Instantiate(_modificationView.gameObject, _viewFactory.UIRoot.UICanvas.transform);
+            _ghost.name = $"{gameObject.name}_Ghost";
+            _ghostRect = _ghost.GetComponent<RectTransform>();
+            
+            Destroy(_ghost.GetComponent<ModificationDragHandler>());
+            Destroy(_ghost.GetComponent<ModificationView>());
+            
+            var ghostCanvasGroup = _ghost.GetComponent<CanvasGroup>();
+            if (ghostCanvasGroup != null)
+            {
+                ghostCanvasGroup.alpha = _draggedAlpha;
+                ghostCanvasGroup.blocksRaycasts = false;
+            }
+            
             _originalPosition = _rectTransform.anchoredPosition;
             _canvasGroup.alpha = _draggedAlpha;
             _canvasGroup.blocksRaycasts = false;
 
             _modificationService.CurrentDraggedModification.Value = _viewModel;
+            
+            SetGhostPosition(eventData);
         }
 
         public void OnDrag(PointerEventData eventData)
         {
             if (_viewModel.IsEquipped.CurrentValue) return;
-
-            // Перемещаем объект за мышью (в координатах канваса)
+            if(_ghost == null) return;
+            
             _rectTransform.position = eventData.position;
+            
+            SetGhostPosition(eventData);
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
             if (_viewModel.IsEquipped.CurrentValue) return;
+            
+            if (_ghost != null)
+            {
+                Destroy(_ghost);
+                _ghost = null;
+            }
 
             _canvasGroup.alpha = 1f;
             _canvasGroup.blocksRaycasts = true;
             _rectTransform.anchoredPosition = _originalPosition;
-
-            // Сбрасываем перетаскиваемый модификатор
+            
             if (_modificationService.CurrentDraggedModification.Value == _viewModel)
                 _modificationService.CurrentDraggedModification.Value = null;
         }
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            // Подсвечиваем, если перетаскивается совместимый мод
-            // var draggedMod = _modificationService.CurrentDraggedModification.Value;
-            // if (draggedMod != null && _viewModel.IsCompatible(draggedMod))
-            // {
-            //     _viewModel.IsCompatibleHighlighted.Value = true;
-            // }
             _modificationService.HoveredModification.Value = _viewModel;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            // _viewModel.IsCompatibleHighlighted.Value = false;
             if (_modificationService.HoveredModification.Value == _viewModel)
                 _modificationService.HoveredModification.Value = null;
+        }
+        
+        private void SetGhostPosition(PointerEventData eventData)
+        {
+            if (_ghostRect == null) return;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _viewFactory.UIRoot.UICanvas.transform as RectTransform,
+                eventData.position,
+                _viewFactory.UIRoot.UICanvas.worldCamera,
+                out Vector2 localPoint);
+            _ghostRect.localPosition = localPoint;
         }
     }
 }

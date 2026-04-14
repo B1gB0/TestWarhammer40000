@@ -41,7 +41,7 @@ namespace Project.Scripts.UI.View
             foreach (var modificationViewModel in modificationViewModels)
             {
                 ModificationView modificationView = await _viewFactory.CreateModificationView(Content);
-                modificationView.Bind(modificationViewModel);
+                modificationView.Bind(modificationViewModel, _viewFactory);
                 _activeViews.Add(modificationView);
             }
         }

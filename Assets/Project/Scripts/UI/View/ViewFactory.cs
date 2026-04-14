@@ -18,9 +18,10 @@ namespace Project.Scripts.UI.View
 
         private IResourceService _resourceService;
         
-        private UIRootView _uiRoot;
-        private UIGameplayRootBinder _uiScene;
         private Container _container;
+
+        public UIRootView UIRoot { get; private set; }
+        public UIGameplayRootBinder UIScene { get; private set; }
 
         [Inject]
         private void Construct(IResourceService resourceService)
@@ -30,11 +31,11 @@ namespace Project.Scripts.UI.View
         
         public void GetUIRootAndUIScene(UIRootView uiRoot, UIGameplayRootBinder uiScene, Container container)
         {
-            _uiRoot = uiRoot;
-            _uiScene = uiScene;
+            UIRoot = uiRoot;
+            UIScene = uiScene;
             _container = container;
 
-            GameObjectInjector.InjectRecursive(_uiScene.gameObject, _container);
+            GameObjectInjector.InjectRecursive(UIScene.gameObject, _container);
         }
 
         public async UniTask<CharacterPanel> CreateCharacterPanel()
@@ -43,7 +44,7 @@ namespace Project.Scripts.UI.View
             characterPanelTemplate = Instantiate(characterPanelTemplate);
             
             CharacterPanel characterPanel = characterPanelTemplate.GetComponent<CharacterPanel>();
-            characterPanel.transform.SetParent(_uiScene.transform, false);
+            characterPanel.transform.SetParent(UIScene.transform, false);
             GameObjectInjector.InjectRecursive(characterPanel.gameObject, _container);
             return characterPanel;
         }

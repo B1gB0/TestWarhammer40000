@@ -30,11 +30,13 @@ namespace Project.Scripts.UI.View
         private SerialDisposable _modTypeSubscription = new SerialDisposable();
 
         private IModificationService _modificationService;
+        private IAbilityService _abilityService;
 
         [Inject]
-        private void Construct(IModificationService modificationService)
+        private void Construct(IModificationService modificationService, IAbilityService abilityService)
         {
             _modificationService = modificationService;
+            _abilityService = abilityService;
         }
 
         public void Bind(AbilityViewModel viewModel)
@@ -63,7 +65,7 @@ namespace Project.Scripts.UI.View
                 .Subscribe(hasModification => _iconOfModification.gameObject.SetActive(hasModification))
                 .AddTo(_disposables);
 
-            _abilityDropHandler.Init(viewModel, _modificationService);
+            _abilityDropHandler.Init(viewModel, _modificationService, _abilityService);
 
             _modificationService.HoveredModification
                 .Subscribe(hoveredModification =>

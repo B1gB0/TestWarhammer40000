@@ -10,11 +10,11 @@ namespace Project.Scripts.Game.GameRoot
     public class UIRootView : MonoBehaviour
     {
         [SerializeField] private UISceneContainer _uiSceneContainer;
-
         [SerializeField] private LoadingPanel _loadingPanel;
 
         private AudioSoundsService _audioSoundsService;
 
+        [field: SerializeField] public Canvas UICanvas { get; private set; }
         public UIStateMachine UIStateMachine { get; private set; }
 
         [Inject]

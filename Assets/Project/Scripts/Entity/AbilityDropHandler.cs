@@ -10,13 +10,16 @@ namespace Project.Scripts.Entity
         private AbilityViewModel _viewModel;
 
         private IModificationService _modificationService;
+        private IAbilityService _abilityService;
 
         public void Init(
             AbilityViewModel viewModel,
-            IModificationService modificationService)
+            IModificationService modificationService,
+            IAbilityService abilityService)
         {
             _viewModel = viewModel;
             _modificationService = modificationService;
+            _abilityService = abilityService;
         }
 
         public void OnDrop(PointerEventData eventData)
@@ -39,14 +42,14 @@ namespace Project.Scripts.Entity
                 _viewModel.IsCompatibleHighlighted.Value = true;
             }
 
-            _modificationService.HoveredAbility.Value = _viewModel;
+            _abilityService.HoveredAbility.Value = _viewModel;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             _viewModel.IsCompatibleHighlighted.Value = false;
-            if (_modificationService.HoveredAbility.Value == _viewModel)
-                _modificationService.HoveredAbility.Value = null;
+            if (_abilityService.HoveredAbility.Value == _viewModel)
+                _abilityService.HoveredAbility.Value = null;
         }
     }
 }

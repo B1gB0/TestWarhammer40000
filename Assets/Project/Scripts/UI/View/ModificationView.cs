@@ -28,14 +28,16 @@ namespace Project.Scripts.UI.View
         private CompositeDisposable _disposables = new();
 
         private IModificationService _modificationService;
+        private IAbilityService _abilityService;
 
         [Inject]
-        private void Construct(IModificationService modificationService)
+        private void Construct(IModificationService modificationService, IAbilityService abilityService)
         {
             _modificationService = modificationService;
+            _abilityService = abilityService;
         }
 
-        public void Bind(ModificationViewModel viewModel)
+        public void Bind(ModificationViewModel viewModel, ViewFactory viewFactory)
         {
             _viewModel = viewModel;
             _disposables.Clear();
@@ -83,7 +85,7 @@ namespace Project.Scripts.UI.View
                 })
                 .AddTo(_disposables);
 
-            _modificationService.HoveredAbility
+            _abilityService.HoveredAbility
                 .Subscribe(hoveredAbility =>
                 {
                     bool compatible = hoveredAbility != null && hoveredAbility.IsCompatible(viewModel);
@@ -98,7 +100,7 @@ namespace Project.Scripts.UI.View
                 })
                 .AddTo(_disposables);
 
-            _modificationDragHandler.Init(viewModel, _modificationService);
+            _modificationDragHandler.Init(this, viewModel, _modificationService, viewFactory);
         }
 
         public void Dispose()

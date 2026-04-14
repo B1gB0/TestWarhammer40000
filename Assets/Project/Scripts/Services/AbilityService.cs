@@ -4,6 +4,8 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using Project.Scripts.Database.Data;
 using Project.Scripts.Entity;
+using Project.Scripts.UI.ViewModel;
+using R3;
 using Reflex.Attributes;
 
 namespace Project.Scripts.Services
@@ -14,6 +16,8 @@ namespace Project.Scripts.Services
         private readonly Random _random = new();
 
         private IDataBaseService _dataBaseService;
+        
+        public ReactiveProperty<AbilityViewModel> HoveredAbility { get; } = new();
         public bool IsInitiated { get; private set; }
 
         [Inject]

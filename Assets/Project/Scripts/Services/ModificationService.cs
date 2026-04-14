@@ -18,7 +18,6 @@ namespace Project.Scripts.Services
         private IDataBaseService _dataBaseService;
         
         public ReactiveProperty<ModificationViewModel> CurrentDraggedModification { get; } = new();
-        public ReactiveProperty<AbilityViewModel> HoveredAbility { get; } = new();
         public ReactiveProperty<ModificationViewModel> HoveredModification { get; } = new();
         
         public bool IsInitiated { get; private set; }
