@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40daddb4f80329e45897db242d727fe1, type: 3}
   m_Name: AudioConfig
   m_EditorClassIdentifier: 
-  Sounds: []
+  Sounds:
+  - ClipName: Warhammer_40000_imperial_guard
+    Clip: {fileID: 8300000, guid: 39f6a55a4d936814e9cd8be5cdbd795f, type: 3}
+    IsLoop: 1
+    Volume: 0.2
   _soundLabel: Sound
   _musicLabel: Music

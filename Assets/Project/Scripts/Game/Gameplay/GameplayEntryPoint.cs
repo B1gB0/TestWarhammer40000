@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Project.Scripts.Audio.Sounds;
 using Project.Scripts.Entity;
 using Project.Scripts.Game.Gameplay.Root.View;
 using Project.Scripts.Game.GameRoot;
@@ -28,6 +29,7 @@ namespace Project.Scripts.Game.Gameplay
 
         private List<Character> _characters = new();
 
+        private AudioSoundsService _audioSoundsService;
         private IDataBaseService _dataBaseService;
         private ICharacterService _characterService;
         private IAbilityService _abilityService;
@@ -38,12 +40,14 @@ namespace Project.Scripts.Game.Gameplay
             IDataBaseService dataBaseService,
             ICharacterService characterService,
             IAbilityService abilityService,
-            IModificationService modificationService)
+            IModificationService modificationService,
+            AudioSoundsService audioSoundsService)
         {
             _dataBaseService = dataBaseService;
             _characterService = characterService;
             _abilityService = abilityService;
             _modificationService = modificationService;
+            _audioSoundsService = audioSoundsService;
         }
 
         public async UniTask<Observable<GameplayExitParameters>> Run(
@@ -56,9 +60,10 @@ namespace Project.Scripts.Game.Gameplay
 
             await _dataBaseService.Init();
             await _characterService.Init();
+            await _audioSoundsService.Init();
             await _abilityService.Init();
             await _modificationService.Init();
-
+            
             // await _particleEffectsService.Init();
 
             _uiScene = Instantiate(_sceneUIRootPrefab);
@@ -69,12 +74,15 @@ namespace Project.Scripts.Game.Gameplay
 
             _uiScene.GetUIStateMachine(uiRoot.UIStateMachine);
 
+            
             await CreateCharacters();
 
             CharacterPanel characterPanel = await _viewFactory.CreateCharacterPanel();
             CharacterPanelViewModel characterPanelViewModel = new CharacterPanelViewModel(_characters);
             characterPanel.Bind(characterPanelViewModel);
 
+            _audioSoundsService.PlayMusic(SoundsType.Warhammer_40000_imperial_guard);
+            
             var exitSceneSignalSubject = new Subject<Unit>();
             _uiScene.Bind(exitSceneSignalSubject);
 

@@ -3,8 +3,6 @@ namespace Project.Scripts.Audio.Sounds
     public enum SoundsType
     {
         None,
-        PaperButton,
-        UIButtonClick,
-        MainMenuMusic,
+        Warhammer_40000_imperial_guard,
     }
 }

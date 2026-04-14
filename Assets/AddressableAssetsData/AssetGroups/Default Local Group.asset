@@ -62,6 +62,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 39f6a55a4d936814e9cd8be5cdbd795f
+    m_Address: Warhammer_40000_imperial_guard
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b62d93575d0a6342acc0dd48c32f294
     m_Address: blade_shroud
     m_ReadOnly: 0

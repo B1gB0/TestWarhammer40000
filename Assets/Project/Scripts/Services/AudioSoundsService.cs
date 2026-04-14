@@ -15,7 +15,7 @@ namespace Project.Scripts.Services
     {
         private const string AudioConfigPath = "AudioConfig";
 
-        private const int CountAudioSources = 10;
+        private const int CountAudioSources = 3;
 
         private readonly Dictionary<SoundsType, Sound> _soundDictionary = new();
 

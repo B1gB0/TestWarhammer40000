@@ -30,7 +30,7 @@ namespace Project.Scripts.Game.MainMenu
         {
             await _audioSoundsService.Init();
             
-            _audioSoundsService.PlayMusic(SoundsType.MainMenuMusic);
+            // _audioSoundsService.PlayMusic(SoundsType.MainMenuMusic);
         }
 
         public Observable<MainMenuExitParameters> Run(UIRootView uiRoot, MainMenuEnterParameters enterParameters)
