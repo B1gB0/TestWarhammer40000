@@ -103,6 +103,9 @@ namespace Project.Scripts.UI.View
             viewModel.IsCompatibleHighlighted
                 .Subscribe(highlighted =>
                 {
+                    if (viewModel.IsEquipped.Value)
+                        return;
+                    
                     _background.color = Colors
                         .GetColor(
                             highlighted ? ColorName.ModificationHighlightedColor : ColorName.ModificationBackgroundColor);
