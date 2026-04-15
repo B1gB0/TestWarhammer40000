@@ -15,13 +15,12 @@ namespace Project.Scripts.UI.View
     {
         private const float ValueForNonActiveColor = 0.6f;
         private const float ValueForHoverClickColor = 1.6f;
-        
+
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _modificationTypeName;
 
         [SerializeField] private Image _icon;
         [SerializeField] private Image _union;
-        [SerializeField] private Image _outline;
         [SerializeField] private Image _background;
 
         [SerializeField] private ModificationDragHandler _modificationDragHandler;
@@ -75,7 +74,7 @@ namespace Project.Scripts.UI.View
                             _union.color.b * ValueForNonActiveColor,
                             _union.color.a
                         );
-                        
+
                         _icon.color = Colors.GetColor(ColorName.ModificationNonActiveColor);
                         _background.color = Colors.GetColor(ColorName.ModificationBackgroundNonActiveColor);
                         _nameText.color = Colors.GetColor(ColorName.ModificationNonActiveColor);
@@ -84,7 +83,7 @@ namespace Project.Scripts.UI.View
                     else
                     {
                         SetColorOfUnion(viewModel);
-                        
+
                         _icon.color = Colors.GetColor(ColorName.DefaultColor);
                         _background.color = Colors.GetColor(ColorName.ModificationBackgroundColor);
                         _nameText.color = Colors.GetColor(ColorName.DefaultColor);
@@ -104,16 +103,18 @@ namespace Project.Scripts.UI.View
             viewModel.IsCompatibleHighlighted
                 .Subscribe(highlighted =>
                 {
-                    _outline.gameObject.SetActive(highlighted);
+                    _background.color = Colors
+                        .GetColor(
+                            highlighted ? ColorName.ModificationHighlightedColor : ColorName.ModificationBackgroundColor);
                 })
                 .AddTo(_disposables);
 
             viewModel.IsHoveredClick
                 .Subscribe(isHover =>
                 {
-                    if(viewModel.IsEquipped.Value)
+                    if (viewModel.IsEquipped.Value)
                         return;
-                    
+
                     if (isHover)
                     {
                         _background.color = new Color(

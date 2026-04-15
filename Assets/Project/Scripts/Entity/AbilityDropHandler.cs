@@ -55,7 +55,8 @@ namespace Project.Scripts.Entity
             }
             else
             {
-                _viewModel.IsHoveredClick.Value = true;
+                if(_viewModel.HasModification.Value)
+                    _viewModel.IsHoveredClick.Value = true;
             }
 
             _abilityService.HoveredAbility.Value = _viewModel;

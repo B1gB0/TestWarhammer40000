@@ -18,7 +18,6 @@ namespace Project.Scripts.UI.View
         [SerializeField] private Image _icon;
         [SerializeField] private Image _iconOfModification;
         [SerializeField] private Image _backgroundOfModification;
-        [SerializeField] private Image _outline;
         [SerializeField] private Image _hoverImage;
 
         [SerializeField] private AbilityDropHandler _abilityDropHandler;
@@ -59,7 +58,10 @@ namespace Project.Scripts.UI.View
                 .AddTo(_disposables);
 
             _viewModel.IsCompatibleHighlighted
-                .Subscribe(highlighted => _outline.gameObject.SetActive(highlighted))
+                .Subscribe(highlighted =>
+                {
+                    _hoverImage.gameObject.SetActive(highlighted);
+                })
                 .AddTo(_disposables);
 
             _viewModel.HasModification
