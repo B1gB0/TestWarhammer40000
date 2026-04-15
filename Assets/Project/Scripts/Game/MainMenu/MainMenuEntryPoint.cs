@@ -1,3 +1,4 @@
+using Project.Scripts.Audio.Sounds;
 using Project.Scripts.Game.Gameplay;
 using Project.Scripts.Game.GameRoot;
 using Project.Scripts.Game.MainMenu.Root.View;
@@ -28,6 +29,7 @@ namespace Project.Scripts.Game.MainMenu
         private async void Start()
         {
             await _audioSoundsService.Init();
+            _audioSoundsService.PlayMusic(SoundsType.Blood_ravens);
         }
 
         public Observable<MainMenuExitParameters> Run(UIRootView uiRoot, MainMenuEnterParameters enterParameters)

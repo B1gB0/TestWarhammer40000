@@ -93,6 +93,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77282753465044d4cbe53c62335648f4
+    m_Address: Blood_ravens
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Music
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7ac13f986bfd5ec459d0a31329db52b3
     m_Address: MainMenu
     m_ReadOnly: 0
