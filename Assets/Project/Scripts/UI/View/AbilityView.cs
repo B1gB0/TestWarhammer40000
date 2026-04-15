@@ -31,12 +31,17 @@ namespace Project.Scripts.UI.View
 
         private IModificationService _modificationService;
         private IAbilityService _abilityService;
+        private AudioSoundsService _audioSoundsService;
 
         [Inject]
-        private void Construct(IModificationService modificationService, IAbilityService abilityService)
+        private void Construct(
+            IModificationService modificationService,
+            IAbilityService abilityService,
+            AudioSoundsService audioSoundsService)
         {
             _modificationService = modificationService;
             _abilityService = abilityService;
+            _audioSoundsService = audioSoundsService;
         }
 
         public void Bind(AbilityViewModel viewModel)
@@ -78,7 +83,7 @@ namespace Project.Scripts.UI.View
                     _hoverImage.gameObject.SetActive(isHoveredClick);
                 }).AddTo(_disposables);
 
-            _abilityDropHandler.Init(viewModel, _modificationService, _abilityService);
+            _abilityDropHandler.Init(viewModel, _modificationService, _abilityService, _audioSoundsService);
 
             _modificationService.HoveredModification
                 .Subscribe(hoveredModification =>

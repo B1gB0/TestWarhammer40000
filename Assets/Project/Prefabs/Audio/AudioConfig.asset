@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: AudioConfig
   m_EditorClassIdentifier: 
   Sounds:
-  - ClipName: UIButton
-    Clip: {fileID: 0}
+  - ClipName: modification_button_click
+    Clip: {fileID: 8300000, guid: 33a2ffd6dc70e254e905cb6b7e83c250, type: 3}
     IsLoop: 0
-    Volume: 1
+    Volume: 0.8
+  - ClipName: UIButton
+    Clip: {fileID: 8300000, guid: 865c6acb18bfcdd4b9ef14cdf72cb13e, type: 3}
+    IsLoop: 0
+    Volume: 0.8
   - ClipName: Warhammer_40000_imperial_guard
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 39f6a55a4d936814e9cd8be5cdbd795f, type: 3}
     IsLoop: 1
     Volume: 0.2
   - ClipName: Blood_ravens
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 77282753465044d4cbe53c62335648f4, type: 3}
     IsLoop: 1
     Volume: 0.2
   _soundLabel: Sound

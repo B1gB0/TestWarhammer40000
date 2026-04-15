@@ -1,4 +1,6 @@
-﻿using Project.Scripts.Services;
+﻿using Cysharp.Threading.Tasks;
+using Project.Scripts.Audio.Sounds;
+using Project.Scripts.Services;
 using Project.Scripts.UI.View;
 using Project.Scripts.UI.ViewModel;
 using UnityEngine;
@@ -23,6 +25,7 @@ namespace Project.Scripts.Entity
 
         private IModificationService _modificationService;
         private ViewFactory _viewFactory;
+        private AudioSoundsService _audioSoundsService;
         
         private bool _isDragging;
 
@@ -38,18 +41,22 @@ namespace Project.Scripts.Entity
             ModificationView view,
             ModificationViewModel viewModel,
             IModificationService modificationService,
-            ViewFactory viewFactory)
+            ViewFactory viewFactory,
+            AudioSoundsService audioSoundsService)
         {
             _modificationView = view;
             _viewModel = viewModel;
             _modificationService = modificationService;
             _viewFactory = viewFactory;
+            _audioSoundsService = audioSoundsService;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             if (_viewModel.IsEquipped.CurrentValue)
                 return;
+
+            _audioSoundsService.PlaySound(SoundsType.modification_button_click).Forget();
             
             _isDragging = true;
 

@@ -1,4 +1,6 @@
-﻿using Project.Scripts.Services;
+﻿using Cysharp.Threading.Tasks;
+using Project.Scripts.Audio.Sounds;
+using Project.Scripts.Services;
 using Project.Scripts.UI.ViewModel;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,23 +14,27 @@ namespace Project.Scripts.Entity
 
         private IModificationService _modificationService;
         private IAbilityService _abilityService;
+        private AudioSoundsService _audioSoundsService;
 
         public void Init(
             AbilityViewModel viewModel,
             IModificationService modificationService,
-            IAbilityService abilityService)
+            IAbilityService abilityService,
+            AudioSoundsService audioSoundsService)
         {
             _viewModel = viewModel;
             _modificationService = modificationService;
             _abilityService = abilityService;
+            _audioSoundsService = audioSoundsService;
         }
         
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                _viewModel?.DetachModification();
-            }
+            if (eventData.button != PointerEventData.InputButton.Left)
+                return;
+            
+            _audioSoundsService.PlaySound(SoundsType.UIButton).Forget();
+            _viewModel?.DetachModification();
         }
 
         public void OnDrop(PointerEventData eventData)
@@ -36,14 +42,16 @@ namespace Project.Scripts.Entity
             var draggedMod = _modificationService.CurrentDraggedModification.Value;
             if (draggedMod == null) return;
 
-            if (_viewModel.TryAttachModification(draggedMod))
-            {
-                _viewModel.IsCompatibleHighlighted.Value = false;
-                _abilityService.HoveredAbility.Value = null;
-                _modificationService.HoveredModification.Value = null;
+            if (!_viewModel.TryAttachModification(draggedMod))
+                return;
+            
+            _viewModel.IsCompatibleHighlighted.Value = false;
+            _abilityService.HoveredAbility.Value = null;
+            _modificationService.HoveredModification.Value = null;
                 
-                _modificationService.ForceEndDrag();
-            }
+            _modificationService.ForceEndDrag();
+                
+            _audioSoundsService.PlaySound(SoundsType.UIButton).Forget();
         }
 
         public void OnPointerEnter(PointerEventData eventData)

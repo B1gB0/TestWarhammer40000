@@ -1,4 +1,7 @@
-﻿using Project.Scripts.Entity;
+﻿using Cysharp.Threading.Tasks;
+using Project.Scripts.Audio.Sounds;
+using Project.Scripts.Entity;
+using Project.Scripts.Services;
 using Project.Scripts.UI.ViewModel;
 using R3;
 using UnityEngine;
@@ -15,12 +18,16 @@ namespace Project.Scripts.UI.View
         private CharacterViewModel _viewModel;
         private CompositeDisposable _disposables = new();
 
+        private AudioSoundsService _audioSoundsService;
+
         public void Bind(
             CharacterViewModel viewModel,
             ReactiveProperty<Character> selectedCharacter,
-            Character character)
+            Character character,
+            AudioSoundsService audioSoundsService)
         {
             _viewModel = viewModel;
+            _audioSoundsService = audioSoundsService;
             _disposables.Clear();
             
             _portrait.sprite = character.Data.SmallPortraitSprite;
@@ -33,6 +40,7 @@ namespace Project.Scripts.UI.View
 
         private void OnButtonClick()
         {
+            _audioSoundsService.PlaySound(SoundsType.UIButton).Forget();
             _viewModel?.SelectCommand.Execute(Unit.Default);
         }
 

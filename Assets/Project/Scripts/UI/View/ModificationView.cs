@@ -31,12 +31,17 @@ namespace Project.Scripts.UI.View
 
         private IModificationService _modificationService;
         private IAbilityService _abilityService;
+        private AudioSoundsService _audioSoundsService;
 
         [Inject]
-        private void Construct(IModificationService modificationService, IAbilityService abilityService)
+        private void Construct(
+            IModificationService modificationService,
+            IAbilityService abilityService,
+            AudioSoundsService audioSoundsService)
         {
             _modificationService = modificationService;
             _abilityService = abilityService;
+            _audioSoundsService = audioSoundsService;
         }
 
         public void Bind(ModificationViewModel viewModel, ViewFactory viewFactory)
@@ -134,7 +139,7 @@ namespace Project.Scripts.UI.View
                 })
                 .AddTo(_disposables);
 
-            _modificationDragHandler.Init(this, viewModel, _modificationService, viewFactory);
+            _modificationDragHandler.Init(this, viewModel, _modificationService, viewFactory, _audioSoundsService);
         }
 
         public void Dispose()
