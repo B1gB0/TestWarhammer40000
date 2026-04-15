@@ -7,6 +7,8 @@ namespace Project.Scripts.UI.View
 {
     public class AbilitiesGridView : View
     {
+        [SerializeField] private GameObject _noAbilitiesTitle;
+        
         private AbilitiesGridViewModel _viewModel;
         private CompositeDisposable _disposables = new();
         private List<AbilityView> _activeViews = new();
@@ -33,7 +35,12 @@ namespace Project.Scripts.UI.View
             _activeViews.Clear();
 
             if (abilityViewModels == null || abilityViewModels.Count == 0)
+            {
+                _noAbilitiesTitle.gameObject.SetActive(true);
                 return;
+            }
+            
+            _noAbilitiesTitle.gameObject.SetActive(false);
             
             foreach (var abilityViewModel in abilityViewModels)
             {

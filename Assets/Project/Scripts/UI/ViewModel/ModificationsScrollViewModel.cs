@@ -10,8 +10,6 @@ namespace Project.Scripts.UI.ViewModel
     {
         private readonly ReactiveProperty<Character> _selectedCharacter;
         private readonly CompositeDisposable _disposables = new();
-        
-        // public ReactiveProperty<IReadOnlyList<ModificationViewModel>> FreeModifications { get; }
         public ReactiveProperty<IReadOnlyList<ModificationViewModel>> AllModificationViewModels { get; }
         
         private List<ModificationViewModel> _allModificationViews;

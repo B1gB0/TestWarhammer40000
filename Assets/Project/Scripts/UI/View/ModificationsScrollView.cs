@@ -9,6 +9,8 @@ namespace Project.Scripts.UI.View
 {
     public class ModificationsScrollView : View, IDisposable
     {
+        [SerializeField] private GameObject _noModificationsTitle;
+
         private ModificationsScrollViewModel _viewModel;
         private ViewFactory _viewFactory;
         private CompositeDisposable _disposables = new();
@@ -35,7 +37,12 @@ namespace Project.Scripts.UI.View
             _activeViews.Clear();
 
             if (modificationViewModels == null || modificationViewModels.Count == 0)
+            {
+                _noModificationsTitle.gameObject.SetActive(true);
                 return;
+            }
+
+            _noModificationsTitle.gameObject.SetActive(false);
 
             foreach (var modificationViewModel in modificationViewModels)
             {

@@ -23,10 +23,13 @@ namespace Project.Scripts.Entity
 
         private IModificationService _modificationService;
         private ViewFactory _viewFactory;
+        
+        private bool _isDragging;
 
         private void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
+            
             if (_canvasGroup == null)
                 _canvasGroup = GetComponent<CanvasGroup>();
         }
@@ -47,6 +50,8 @@ namespace Project.Scripts.Entity
         {
             if (_viewModel.IsEquipped.CurrentValue)
                 return;
+            
+            _isDragging = true;
 
             _ghost = Instantiate(_modificationView.gameObject, _viewFactory.UIRoot.UICanvas.transform);
             _ghost.name = $"{gameObject.name}_Ghost";
@@ -74,7 +79,9 @@ namespace Project.Scripts.Entity
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (_viewModel.IsEquipped.CurrentValue) return;
+            if (_viewModel.IsEquipped.CurrentValue)
+                return;
+
             SetGhostPosition(eventData);
         }
 
@@ -86,6 +93,8 @@ namespace Project.Scripts.Entity
 
             _modificationService.UnregisterDragHandler(this);
             _modificationService.CurrentDraggedModification.Value = null;
+            
+            _isDragging = false;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -95,6 +104,9 @@ namespace Project.Scripts.Entity
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (_isDragging)
+                return;
+            
             if (_modificationService.HoveredModification.Value == _viewModel)
                 _modificationService.HoveredModification.Value = null;
         }

@@ -38,6 +38,10 @@ namespace Project.Scripts.Entity
 
             if (_viewModel.TryAttachModification(draggedMod))
             {
+                _viewModel.IsCompatibleHighlighted.Value = false;
+                _abilityService.HoveredAbility.Value = null;
+                _modificationService.HoveredModification.Value = null;
+                
                 _modificationService.ForceEndDrag();
             }
         }
