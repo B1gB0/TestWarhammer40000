@@ -19,9 +19,10 @@ namespace Project.Scripts.UI.View
         [SerializeField] private Image _iconOfModification;
         [SerializeField] private Image _backgroundOfModification;
         [SerializeField] private Image _outline;
+        [SerializeField] private Image _hoverImage;
 
         [SerializeField] private AbilityDropHandler _abilityDropHandler;
-        
+
         [SerializeField] private List<Sprite> _iconSpritesOfModification;
         [SerializeField] private List<Sprite> _iconSpritesOfUnions;
 
@@ -68,6 +69,12 @@ namespace Project.Scripts.UI.View
                     _backgroundOfModification.sprite = _iconSpritesOfUnions[5];
                 })
                 .AddTo(_disposables);
+
+            _viewModel.IsHoveredClick
+                .Subscribe(isHoveredClick =>
+                {
+                    _hoverImage.gameObject.SetActive(isHoveredClick);
+                }).AddTo(_disposables);
 
             _abilityDropHandler.Init(viewModel, _modificationService, _abilityService);
 

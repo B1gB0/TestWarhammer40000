@@ -11,6 +11,7 @@ namespace Project.Scripts.UI.ViewModel
         public ReactiveProperty<string> Name { get; }
         public ReactiveProperty<ModificationType> ModificationType { get; }
         public ReactiveProperty<bool> IsEquipped { get; }
+        public ReactiveProperty<bool> IsHoveredClick { get; }
         public ReactiveProperty<AbilityViewModel> AttachedAbility { get; }
         public ReactiveProperty<bool> IsCompatibleHighlighted { get; }
 
@@ -23,6 +24,7 @@ namespace Project.Scripts.UI.ViewModel
             IsEquipped = new ReactiveProperty<bool>(false);
             AttachedAbility = new ReactiveProperty<AbilityViewModel>();
             IsCompatibleHighlighted = new ReactiveProperty<bool>(false);
+            IsHoveredClick = new ReactiveProperty<bool>(false);
         }
         
         public void MarkAsAttached(AbilityViewModel ability)
@@ -44,6 +46,7 @@ namespace Project.Scripts.UI.ViewModel
             IsEquipped.Dispose();
             AttachedAbility.Dispose();
             IsCompatibleHighlighted.Dispose();
+            IsHoveredClick.Dispose();
         }
     }
 }

@@ -53,6 +53,10 @@ namespace Project.Scripts.Entity
             {
                 _viewModel.IsCompatibleHighlighted.Value = true;
             }
+            else
+            {
+                _viewModel.IsHoveredClick.Value = true;
+            }
 
             _abilityService.HoveredAbility.Value = _viewModel;
         }
@@ -62,6 +66,8 @@ namespace Project.Scripts.Entity
             _viewModel.IsCompatibleHighlighted.Value = false;
             if (_abilityService.HoveredAbility.Value == _viewModel)
                 _abilityService.HoveredAbility.Value = null;
+            
+            _viewModel.IsHoveredClick.Value = false;
         }
     }
 }

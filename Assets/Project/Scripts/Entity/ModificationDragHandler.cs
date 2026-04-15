@@ -100,10 +100,13 @@ namespace Project.Scripts.Entity
         public void OnPointerEnter(PointerEventData eventData)
         {
             _modificationService.HoveredModification.Value = _viewModel;
+            _viewModel.IsHoveredClick.Value = true;
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            _viewModel.IsHoveredClick.Value = false;
+            
             if (_isDragging)
                 return;
             

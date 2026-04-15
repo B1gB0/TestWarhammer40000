@@ -16,6 +16,7 @@ namespace Project.Scripts.UI.ViewModel
         public ReactiveProperty<ModificationViewModel> AttachedModification { get; }
         public ReactiveProperty<bool> HasModification { get; }
         public ReactiveProperty<bool> IsCompatibleHighlighted { get; }
+        public ReactiveProperty<bool> IsHoveredClick { get; }
 
         public IReadOnlyList<ModificationType> CompatibleTypes => _ability.Data.CompatibleTypes;
 
@@ -29,6 +30,7 @@ namespace Project.Scripts.UI.ViewModel
                 .Select(mod => mod != null)
                 .ToBindableReactiveProperty();
             IsCompatibleHighlighted = new ReactiveProperty<bool>(false);
+            IsHoveredClick = new ReactiveProperty<bool>(false);
         }
 
         public bool TryAttachModification(ModificationViewModel modification)

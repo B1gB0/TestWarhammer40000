@@ -14,6 +14,7 @@ namespace Project.Scripts.UI.View
     public class ModificationView : View
     {
         private const float ValueForNonActiveColor = 0.6f;
+        private const float ValueForHoverClickColor = 1.6f;
         
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _modificationTypeName;
@@ -104,6 +105,28 @@ namespace Project.Scripts.UI.View
                 .Subscribe(highlighted =>
                 {
                     _outline.gameObject.SetActive(highlighted);
+                })
+                .AddTo(_disposables);
+
+            viewModel.IsHoveredClick
+                .Subscribe(isHover =>
+                {
+                    if(viewModel.IsEquipped.Value)
+                        return;
+                    
+                    if (isHover)
+                    {
+                        _background.color = new Color(
+                            _background.color.r * ValueForHoverClickColor,
+                            _background.color.g * ValueForHoverClickColor,
+                            _background.color.b * ValueForHoverClickColor,
+                            _background.color.a
+                        );
+                    }
+                    else
+                    {
+                        _background.color = Colors.GetColor(ColorName.ModificationBackgroundColor);
+                    }
                 })
                 .AddTo(_disposables);
 

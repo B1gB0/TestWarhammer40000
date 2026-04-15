@@ -11,5 +11,6 @@ namespace Project.Scripts.Game.Constants
         ModificationBackgroundNonActiveColor = 6,
         ModificationNonActiveColor = 7,
         DefaultColor = 8,
+        ModificationHoverClickColor = 9,
     }
 }
