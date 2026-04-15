@@ -13,6 +13,8 @@ namespace Project.Scripts.UI.View
 {
     public class ModificationView : View
     {
+        private const float ValueForNonActiveColor = 0.6f;
+        
         [SerializeField] private TMP_Text _nameText;
         [SerializeField] private TMP_Text _modificationTypeName;
 
@@ -57,24 +59,7 @@ namespace Project.Scripts.UI.View
                     else
                         _icon.sprite = null;
 
-                    switch (viewModel.ModificationType.Value)
-                    {
-                        case ModificationType.Psyker:
-                            _union.color = Colors.GetColor(ColorName.ModificationPsykerColor);
-                            break;
-                        case ModificationType.Dot:
-                            _union.color = Colors.GetColor(ColorName.ModificationDotColor);
-                            break;
-                        case ModificationType.Attack:
-                            _union.color = Colors.GetColor(ColorName.ModificationAttackColor);
-                            break;
-                        case ModificationType.Buff:
-                            _union.color = Colors.GetColor(ColorName.ModificationBuffColor);
-                            break;
-                        case ModificationType.Debuff:
-                            _union.color = Colors.GetColor(ColorName.ModificationDebuffColor);
-                            break;
-                    }
+                    SetColorOfUnion(viewModel);
                 })
                 .AddTo(_disposables);
 
@@ -83,15 +68,22 @@ namespace Project.Scripts.UI.View
                 {
                     if (isEquipped)
                     {
-                        _union.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
-                        _icon.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
+                        _union.color = new Color(
+                            _union.color.r * ValueForNonActiveColor,
+                            _union.color.g * ValueForNonActiveColor,
+                            _union.color.b * ValueForNonActiveColor,
+                            _union.color.a
+                        );
+                        
+                        _icon.color = Colors.GetColor(ColorName.ModificationNonActiveColor);
                         _background.color = Colors.GetColor(ColorName.ModificationBackgroundNonActiveColor);
-                        _nameText.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
-                        _modificationTypeName.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
+                        _nameText.color = Colors.GetColor(ColorName.ModificationNonActiveColor);
+                        _modificationTypeName.color = Colors.GetColor(ColorName.ModificationNonActiveColor);
                     }
                     else
                     {
-                        _union.color = Colors.GetColor(ColorName.DefaultColor);
+                        SetColorOfUnion(viewModel);
+                        
                         _icon.color = Colors.GetColor(ColorName.DefaultColor);
                         _background.color = Colors.GetColor(ColorName.ModificationBackgroundColor);
                         _nameText.color = Colors.GetColor(ColorName.DefaultColor);
@@ -121,6 +113,28 @@ namespace Project.Scripts.UI.View
         public void Dispose()
         {
             _disposables.Dispose();
+        }
+
+        private void SetColorOfUnion(ModificationViewModel viewModel)
+        {
+            switch (viewModel.ModificationType.Value)
+            {
+                case ModificationType.Psyker:
+                    _union.color = Colors.GetColor(ColorName.ModificationPsykerColor);
+                    break;
+                case ModificationType.Dot:
+                    _union.color = Colors.GetColor(ColorName.ModificationDotColor);
+                    break;
+                case ModificationType.Attack:
+                    _union.color = Colors.GetColor(ColorName.ModificationAttackColor);
+                    break;
+                case ModificationType.Buff:
+                    _union.color = Colors.GetColor(ColorName.ModificationBuffColor);
+                    break;
+                case ModificationType.Debuff:
+                    _union.color = Colors.GetColor(ColorName.ModificationDebuffColor);
+                    break;
+            }
         }
 
         private void OnDestroy() => Dispose();

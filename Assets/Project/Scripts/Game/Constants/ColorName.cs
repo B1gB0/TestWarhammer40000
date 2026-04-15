@@ -9,7 +9,7 @@ namespace Project.Scripts.Game.Constants
         ModificationDebuffColor = 4,
         ModificationBackgroundColor = 5,
         ModificationBackgroundNonActiveColor = 6,
-        ModificationUnionNonActiveColor = 7,
+        ModificationNonActiveColor = 7,
         DefaultColor = 8,
     }
 }
