@@ -18,8 +18,8 @@ namespace Project.Scripts.UI.View
 
         [SerializeField] private Image _icon;
         [SerializeField] private Image _union;
-        [SerializeField] private Image _nonActive;
         [SerializeField] private Image _outline;
+        [SerializeField] private Image _background;
 
         [SerializeField] private ModificationDragHandler _modificationDragHandler;
         [SerializeField] private List<Sprite> _iconSprites;
@@ -81,7 +81,22 @@ namespace Project.Scripts.UI.View
             _viewModel.IsEquipped
                 .Subscribe(isEquipped =>
                 {
-                    _nonActive.gameObject.SetActive(isEquipped);
+                    if (isEquipped)
+                    {
+                        _union.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
+                        _icon.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
+                        _background.color = Colors.GetColor(ColorName.ModificationBackgroundNonActiveColor);
+                        _nameText.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
+                        _modificationTypeName.color = Colors.GetColor(ColorName.ModificationUnionNonActiveColor);
+                    }
+                    else
+                    {
+                        _union.color = Colors.GetColor(ColorName.DefaultColor);
+                        _icon.color = Colors.GetColor(ColorName.DefaultColor);
+                        _background.color = Colors.GetColor(ColorName.ModificationBackgroundColor);
+                        _nameText.color = Colors.GetColor(ColorName.DefaultColor);
+                        _modificationTypeName.color = Colors.GetColor(ColorName.DefaultColor);
+                    }
                 })
                 .AddTo(_disposables);
 
