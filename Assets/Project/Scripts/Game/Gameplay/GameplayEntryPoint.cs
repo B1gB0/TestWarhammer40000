@@ -95,8 +95,8 @@ namespace Project.Scripts.Game.Gameplay
             _characters.Add(await _characterService.CreateRandomUniqueCharacter(4, 7));
             _characters.Add(await _characterService.CreateRandomUniqueCharacter(0, 20));
             _characters.Add(await _characterService.CreateRandomUniqueCharacter(16, 25));
-            _characters.Add(await _characterService.CreateRandomUniqueCharacter(5, 11));
-            _characters.Add(await _characterService.CreateRandomUniqueCharacter(2, 5));
+            _characters.Add(await _characterService.CreateRandomUniqueCharacter(0, 0));
+            _characters.Add(await _characterService.CreateRandomUniqueCharacter(7, 5));
             _characters.Add(await _characterService.CreateRandomUniqueCharacter(1, 1));
         }
     }
