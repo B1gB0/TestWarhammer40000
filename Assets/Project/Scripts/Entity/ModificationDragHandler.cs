@@ -99,6 +99,9 @@ namespace Project.Scripts.Entity
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            var draggedMod = _modificationService.CurrentDraggedModification.Value;
+            if (draggedMod != null) return;
+            
             _modificationService.HoveredModification.Value = _viewModel;
             _viewModel.IsHoveredClick.Value = true;
         }
