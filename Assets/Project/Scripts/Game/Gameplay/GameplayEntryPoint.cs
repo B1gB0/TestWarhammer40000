@@ -6,6 +6,7 @@ using Project.Scripts.Game.Gameplay.Root.View;
 using Project.Scripts.Game.GameRoot;
 using Project.Scripts.Services;
 using Project.Scripts.UI.Panel;
+using Project.Scripts.UI.StateMachine.States;
 using Project.Scripts.UI.View;
 using Project.Scripts.UI.ViewModel;
 using R3;
@@ -63,8 +64,6 @@ namespace Project.Scripts.Game.Gameplay
             await _audioSoundsService.Init();
             await _abilityService.Init();
             await _modificationService.Init();
-            
-            // await _particleEffectsService.Init();
 
             _uiScene = Instantiate(_sceneUIRootPrefab);
 
@@ -74,7 +73,6 @@ namespace Project.Scripts.Game.Gameplay
 
             _uiScene.GetUIStateMachine(uiRoot.UIStateMachine);
 
-            
             await CreateCharacters();
 
             CharacterPanel characterPanel = await _viewFactory.CreateCharacterPanel();
@@ -82,6 +80,8 @@ namespace Project.Scripts.Game.Gameplay
             characterPanel.Bind(characterPanelViewModel, _viewFactory);
 
             _audioSoundsService.PlayMusic(SoundsType.Warhammer_40000_imperial_guard);
+            
+            uiRoot.UIStateMachine.EnterIn<GameplayState>();
             
             var exitSceneSignalSubject = new Subject<Unit>();
             _uiScene.Bind(exitSceneSignalSubject);

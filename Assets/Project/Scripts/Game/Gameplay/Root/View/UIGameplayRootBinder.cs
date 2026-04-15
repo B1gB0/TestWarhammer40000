@@ -17,7 +17,6 @@ namespace Project.Scripts.Game.Gameplay.Root.View
             _uiStateMachine = uiStateMachine;
             _uiStateMachine.RemoveState<GameplayState>();
             _uiStateMachine.AddState(new GameplayState(UIScene));
-            _uiStateMachine.EnterIn<GameplayState>();
         }
         
         public void Bind(Subject<Unit> exitSceneSignalSubject)
